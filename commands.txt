@@ -1,0 +1,222 @@
+        $ mysqladmin -uroot -p create art
+Listing
+  3-3
+        php symfony configure:database   "mysql:host=localhost;dbname=art" root duncan
+        php symfony doctrine:build --model
+
+ 
+php symfony help doctrine:build
+
+       php symfony doctrine:build --sql
+
+        php symfony doctrine:build --all --no-confirmation
+
+php symfony doctrine:build-all-reload
+
+php symfony doctrine:build --model
+
+
+ php symfony doctrine:clean-model-files
+
+
+        php symfony doctrine:data-load
+
+        php symfony configure:database --name=doctrine  --class=sfDoctrineDatabase --env=test     "mysql:host=localhost;dbname=apieveryman_test" apieveryman apieveryman
+
+
+        php symfony configure:database --name=doctrine  --class=sfDoctrineDatabase --env=test     "mysql:host=localhost;dbname=siberia_test" duncan root
+        php symfony doctrine:insert-sql --env=test
+
+        php symfony test:functional frontend apiActions
+        
+        php symfony test:functional frontend affiliateActions
+
+
+        php symfony test:functional frontend shoefactoryActions
+
+
+       mysqladmin -uroot -pduncan create apieveryman_test
+       mysqladmin -uroot -pduncan drop apieveryman_test
+
+  with('request')->begin()->
+    isParameter('module', 'shoefactory')->
+    isParameter('action', 'update')->
+
+  end()->
+
+
+[11:03:47] Tam Denholm: host: sales.esmya.com
+[11:04:14] Tam Denholm: user: root
+[11:04:19] Tam Denholm: pass: esmya123
+
+php symfony project:deploy production
+
+
+scp root@sales.esmya.com:/home/esmya/webserver ./
+
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend people SalesPerson
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend sales Day
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend target Target
+
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend location Location
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend order ShoeOrder
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend shop Shop
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend shoe Shoe
+ php symfony doctrine:generate-module --with-show --non-verbose-templates frontend factory Factory
+ php symfony doctrine:generate-module --with-show --non-verbose-templates frontend office Office
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend item artItem
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend dates artDate
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend lesson artDate
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend lessonstage LessonStage
+
+
+
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates factory order ShoeOrder
+  php symfony doctrine:generate-module --with-show --non-verbose-templates factory shoe Shoe
+
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates shop order ShoeOrder
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates office order ShoeOrder
+
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates office moveShoe ShoeLocation
+
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates office takeanorder sold
+  
+  
+  php symfony doctrine:generate-module --with-show --non-verbose-templates office addashoe    Shoe
+  
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates shop takeAnOrder ShoeOrder
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates shop sellashoe Sold
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend ordertemp ShoeOrder
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates anna model Model
+
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates design model Model
+
+php symfony project:deploy production -t
+
+git show HEAD~4:config/databases.yml
+
+
+php symfony project:deploy production --go
+
+        php symfony doctrine:build --all
+        
+        php symfony doctrine:data-load
+
+        php symfony doctrine:build --all --and-load
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend shoe shoe
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend shoeshop shoe
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend materialfactory material
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend ordermaker shoe_order
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend ordermaker shoe_order
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend shoemaker order_line
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend salemaker sale
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend refundmaker sale
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend partmaker shoe
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend shoetester shoe
+ 
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend partmanager part
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend modelmanager shoe_model
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend materialmanager material
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend materialfactory material
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend ordershop shoe_order
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend internetmanager internet_details
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend internetmodel m_p_material
+
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend payment internet_order
+
+php symfony generate:app backend
+
+
+wget "http://trac.symfony-project.org/browser/branches/1.4/data/bin/check_configuration.php?format=raw"
+
+
+
+        php symfony generate:app frontend
+        php symfony generate:app backend
+        
+        
+  php symfony doctrine:generate-module frontend affiliate affiliate --non-verbose-templates
+
+
+     php symfony doctrine:generate-admin backend UserLoginHistory  --module=userhistory
+
+     php symfony doctrine:generate-admin backend affiliate  --module=affiliate
+     php symfony doctrine:generate-admin backend affiliate_order  -- module=order
+
+
+php symfony generate:module frontend api
+
+
+        php symfony doctrine:generate-admin backend Shoe --module=shoe
+        php symfony doctrine:generate-admin backend Model --module=model
+        php symfony doctrine:generate-admin backend Model_part --module=part
+        php symfony doctrine:generate-admin backend Part --module=shoepart
+
+
+
+// an example of using a shared base actions class
+        php symfony doctrine:generate-admin backend sfShoppingItem --module=shopping --actions-base-class=sfSortableModuleActions 
+
+        php symfony doctrine:generate-admin backend Work --module=work --actions-base-class=sfAdminSharedActions
+        php symfony doctrine:generate-admin backend Exhibition --module=exhibition --actions-base-class=sfAdminSharedActions
+        php symfony doctrine:generate-admin backend People --module=people --actions-base-class=sfAdminSharedActions
+
+php symfony plugin:publish-assets
+
+php symfony cc
+
+php symfony guard:create-user watson watson
+ php symfony guard:promote watson
+php symfony guard:create-user duncan duncan Duncan Watson
+ php symfony guard:promote duncancd
+ 
+ 
+php symfony generate:app office
+php symfony generate:app shop
+php symfony generate:app factory
+php symfony generate:app anna
+php symfony generate:app design
+
+
+module/info
+  templates
+    ???success.php include_partial
+module/shoeTemplates
+  templates -> symlink
+lib/sharedPartials/shoe/_????.php
+          
+therefore each module has it's own template and the partials are shared      
+
+
+moveShoe
+What is the Gui?
+     
+     
+     git remote add siberia /home/smileybp/objectSiberiaRepository

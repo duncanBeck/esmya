@@ -1,0 +1,48 @@
+Day:
+  1:
+    actual_sales:  10
+    SalesPerson:   George
+    sales_date:          '2013-8-10'
+
+
+  2:
+    actual_sales:  4
+    SalesPerson:   George
+    sales_date:          '2013-9-11'
+
+  3:
+    actual_sales:  500
+    SalesPerson:   George
+    sales_date:          '2013-9-12'
+
+
+  22:
+    actual_sales:  4
+    SalesPerson:   George
+    sales_date:          '2013-4-11'
+
+  23:
+    actual_sales:  5
+    SalesPerson:   Steven
+    sales_date:          '2013-4-12'
+
+  25:
+    actual_sales:  5
+    SalesPerson:   Dave
+    sales_date:          '2013-4-12'
+
+
+  14:
+    actual_sales:  555
+    SalesPerson:   Klaus
+    sales_date:          '2013-9-12'
+
+  15:
+    actual_sales:  777
+    SalesPerson:   Klaus
+    sales_date:          '2013-7-12'
+
+  100:
+    actual_sales:  70
+    SalesPerson:   Cornelius
+    sales_date:          '2013-9-12'

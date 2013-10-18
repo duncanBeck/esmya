@@ -1,0 +1,42 @@
+SalesPerson:
+  columns:
+    name:               { type: string (32)}
+    region_id:          { type: integer, notnull: true }
+    user_id:            { type: integer, notnull: true }
+    is_active:          { type: boolean, notnull: true, default: 1 }
+    is_admin:           { type: boolean, notnull: true, default: 0 }
+  relations:
+    Region:             { local: region_id, foreign: id, foreignAlias: SalePeople }
+    User:
+      class: sfGuardUser
+      local: user_id
+      foreign: id
+      type: one
+      foreignType: one
+      foreignAlias: SalesPerson
+
+Day:
+  columns:
+    sales_date:         { type: date }
+    actual_sales:       { type: integer }
+    sales_person_id:    { type: integer, notnull: true }
+  relations:
+    SalesPerson:        { local: sales_person_id, foreign: id, foreignAlias: Days }
+
+Target:
+  columns:
+    sales_target:       { type: integer }
+    time_period_month:        { type: integer }
+
+
+    sales_person_id:    { type: integer, notnull: true }
+  relations:
+    SalesPerson:        { local: sales_person_id, foreign: id, foreignAlias: Targets }
+
+
+
+Region:
+  columns:
+    name:               { type: string (32)}
+    country_id:         { type: integer }
+

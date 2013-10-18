@@ -1,0 +1,13 @@
+Region:
+  UK:
+    name:       United Kingdom
+    country_id: 1
+
+  Germany:
+    name: Germany
+    country_id: 2
+
+
+  Holland:
+    name: Netherlands
+    country_id: 3

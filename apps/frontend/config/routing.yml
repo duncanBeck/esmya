@@ -1,0 +1,58 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+stats:
+  url:   /stats
+  param: { module: present, action: stats }
+
+race:
+  url:   /race
+  param: { module: present, action: race }
+
+raceJSON:
+  url:   /race_json
+  param: { module: present, action: raceJSON }
+
+
+people:
+  class:   sfDoctrineRouteCollection
+  options:
+    model:                SalesPerson
+    module:               people
+    prefix_path:          /people
+    column:               id
+    with_wildcard_routes: true
+
+sales:
+  class:   sfDoctrineRouteCollection
+  options:
+    model: Day
+    module:               sales
+    prefix_path:          /sales
+    column:               id
+    with_wildcard_routes: true
+
+target:
+  class:   sfDoctrineRouteCollection
+  options:
+    model:                Target
+    module:               target
+    prefix_path:          /targets
+    column:               id
+    with_wildcard_routes: true
+
+
+
+# default rules
+homepage:
+  url:   /
+  param: { module: people, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

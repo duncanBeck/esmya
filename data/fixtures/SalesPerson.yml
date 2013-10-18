@@ -1,0 +1,68 @@
+sfGuardUser:
+  George:
+    username: George
+    password: George
+    first_name:     George
+    email_address:    George@symfony-project.com
+
+  Steven:
+    username: Steven
+    password: Steven
+    first_name:     Steven
+    email_address:    Steven@symfony-project.com
+
+  Oscar:
+    username: Oscar
+    password: Oscar
+    first_name:     Oscar
+    email_address:    Oscar@symfony-project.com
+
+  Klaus:
+    username: Klaus
+    password: Klaus
+    first_name:     Klaus
+    email_address:    Klaus@symfony-project.com
+
+  Cornelius:
+    username: Cornelius
+    password: Cornelius
+    first_name:     Cornelius
+    email_address:    Cornelius@symfony-project.com
+
+
+SalesPerson:
+  George:
+    name:       George
+    User:       George
+    Region:     UK
+    is_active:  1
+    is_admin:   1
+
+  Steven:
+    name:       Steven
+    User:       Steven
+    Region:     UK
+    is_active:  1
+    is_admin:   0
+
+  Dave:
+    name:       Oscar
+    User:       Oscar
+    Region:     Germany
+    is_active:  1
+    is_admin:   0
+
+  Cornelius:
+    name:       Cornelius
+    User:       Cornelius
+    Region:     Holland
+    is_active:  1
+    is_admin:   0
+
+
+  Klaus:
+    name:       Klaus
+    User:       Klaus
+    Region:     Germany
+    is_active:  1
+    is_admin:   0

@@ -1,0 +1,44 @@
+Target:
+  1:
+    sales_target:  10
+    SalesPerson:   George
+    time_period:          '2013-08-01'
+
+
+  2:
+    sales_target:  40
+    SalesPerson:   George
+    time_period:          '2013-09-01'
+
+  3:
+    sales_target:  50
+    SalesPerson:   George
+    time_period:          '2013-09-01'
+
+
+  22:
+    sales_target:  40
+    SalesPerson:   George
+    time_period:          '2013-04-01'
+
+  23:
+    sales_target:  50
+    SalesPerson:   Steven
+    time_period:          '2013-04-01'
+
+
+
+  14:
+    sales_target:  55
+    SalesPerson:   Klaus
+    time_period:          '2013-09-01'
+
+  15:
+    sales_target:  77
+    SalesPerson:   Klaus
+    time_period:          '2013-07-01'
+
+  100:
+    sales_target:  70
+    SalesPerson:   Cornelius
+    time_period:          '2013-09-01'

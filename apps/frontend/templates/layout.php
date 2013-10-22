@@ -37,7 +37,12 @@
                     <div class="container">
 
                         <ul class="nav nav-tabs">
-                            <li >  <a href="<?php  echo url_for('people') ?>">People</a></li>
+
+                            <?php if ($sf_user->isAuthenticated())
+
+                               if ($sf_user->getGuardUser()->getSalesPerson()->getIsAdmin()==1): ?>
+                                    <li >  <a href="<?php  echo url_for('people') ?>">People</a></li>
+                            <?php endif ?>
                             <li >  <a href="<?php  echo url_for('target') ?>">Targets</a></li>
 
                             <li >  <a href="<?php  echo url_for('stats') ?>">Stats</a></li>

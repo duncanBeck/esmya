@@ -16,4 +16,59 @@ class SalesPersonTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('SalesPerson');
     }
+
+
+    public function totalSalesUpToTheWeekForOneSalePerson  ($date, $salesPersonId, $year = '2013') {
+
+        // change the first group  by to s.name if you want to see the individuals
+
+        settype($s_date, "string");
+        settype($f_date, "string");
+
+        $s_date = $year."-01-01";
+        $f_date = $date;
+// echo ($s_date);
+
+        $q = Doctrine_Query::create()
+            ->select('SUM(d.actual_sales) as totalsales')
+            ->from('SalesPerson s')
+            ->innerJoin('s.Days d')
+            ->where('s.id = ?', $salesPersonId)
+
+
+            ->andWhere('d.sales_date > "'.$s_date.'"')
+            ->andWhere('d.sales_date < "'.$f_date.'" ');
+        ;
+        // echo $q->getSqlQuery();
+
+        return $q->execute();
+    }
+
+    public function totalTargetUpToTheWeekForOneSalePerson  ($date, $salesPersonId, $year = '2013') {
+
+        // change the first group  by to s.name if you want to see the individuals
+
+        settype($s_date, "string");
+        settype($f_date, "string");
+
+        $s_date = $year."-01-01";
+        $f_date = $date;
+// echo ($s_date);
+
+        $q = Doctrine_Query::create()
+            ->select('SUM(t.sales_target) as totaltarget, s.id, d.id ')
+            ->from('SalesPerson s')
+            ->innerJoin('s.Targets t')
+            ->where('s.id = ?', $salesPersonId)
+
+            ->andWhere('t.time_period > "'.$s_date.'"')
+            ->andWhere('t.time_period < "'.$f_date.'" ');
+        ;
+        // echo $q->getSqlQuery();
+
+        return $q->execute();
+    }
+
+
+
 }

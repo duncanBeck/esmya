@@ -12,12 +12,13 @@ class myActions extends sfActions
 
         if ($this->request->getParameter('sale_id')!=null) {
             $this->getUser()->setAttribute('selected_user', $this->request->getParameter('sale_id') );
-            $this->selected_user  = Doctrine::getTable('SalesPerson')->findOneById($this->getUser()->getAttribute('selected_user'));
-        } else {
-            $this->getUser()->setAttribute('selected_user',
-            $this->getUser()->getGuardUser()->getSalesPerson()->getId() );
-            $this->selected_user  = Doctrine::getTable('SalesPerson')->findOneById($this->getUser()->getAttribute('selected_user'));
         }
+
+
+       //  $this->getUser()->setAttribute('selected_user',
+          //  $this->getUser()->getGuardUser()->getSalesPerson()->getId() );
+
+        $this->selected_user  = Doctrine::getTable('SalesPerson')->findOneById($this->getUser()->getAttribute('selected_user'));
 
     }
 

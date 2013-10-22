@@ -74,8 +74,6 @@ class DayTable extends Doctrine_Table
 
 }
 /*
- * I was looking around for this, so when I found it I thought I would post it here. One of those simple things that you dont always remember how to do.
-
 For when you need to select a date grouping by Month and Year and get a sum of a value for that month.
 
 SELECT YEAR( sales_date ) AS 'Year', MONTH( sales_date ) AS 'Month', SUM( actual_sales ) AS "Units sold"

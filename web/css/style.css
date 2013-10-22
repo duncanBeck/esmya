@@ -210,3 +210,12 @@ sup {
 #footer a:hover {
 	text-decoration: none;
 }
+
+
+#sales_dashboard {
+    width: 600px;
+    text-align: center;
+    color: #777;
+    font-weight: normal;
+    font-size: 32px;
+}

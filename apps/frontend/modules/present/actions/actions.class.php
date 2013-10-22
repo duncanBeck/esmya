@@ -14,8 +14,8 @@ class presentActions extends myActions
 
     public function executeStats(sfWebRequest $request)
     {
- //       $this->totals  = Doctrine::getTable('Day')->monthlyTotalsForThisMonth($request->getParameter('month'));
-
+        $this->sales  = Doctrine::getTable('SalesPerson')->totalSalesUpToTheWeekForOneSalePerson  (date("Y-m-d H:i:s"), $this->selected_user->getId() , '2013')->getFirst();
+        $this->target  = Doctrine::getTable('SalesPerson')->totalTargetUpToTheWeekForOneSalePerson  (date("Y-m-d H:i:s"), $this->selected_user->getId() , '2013')->getFirst();
     }
 
 

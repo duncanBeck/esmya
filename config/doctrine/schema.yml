@@ -26,9 +26,7 @@ Day:
 Target:
   columns:
     sales_target:       { type: integer }
-    time_period_month:        { type: integer }
-
-
+    time_period:        { type: date }
     sales_person_id:    { type: integer, notnull: true }
   relations:
     SalesPerson:        { local: sales_person_id, foreign: id, foreignAlias: Targets }

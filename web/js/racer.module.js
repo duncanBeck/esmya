@@ -146,7 +146,9 @@ function racerModule(){
             while((a = a.slice(4)).length>0)
             loadCars();
         }); /* end of json done */
+
 // load cars
+
     function loadCars(){
         var carAni = [];
         for (i=0;i<cars.length;i++){
@@ -154,13 +156,21 @@ function racerModule(){
             carAni[i] = new TweenMax(cars[i].container, cars[i].speed, {bezier:{type:"cubic",curviness:1.2, values:track,autoRotate:true},ease:Linear.easeNone,repeat:-1});
 // sets car position
             TweenMax.to(carAni[i],0,{timeScale:0,progress:track_startPosition});
+
+
         };
+        carAni[0].onclick(function() {
+
+          alert('hi');
+        })
         var playTimes = 0;
         var showPlayBtn = function(){
             TweenMax.to(play_btn,0.5,{autoAlpha:1,ease:Linear.easeNone});
             $(play_btn).on('mouseover',function(){TweenMax.to(this,0.5,{autoAlpha:0.5});}).on('mouseleave',function(){TweenMax.to(this,0.5,{autoAlpha:1});});
         }
+
         showPlayBtn();
+
         play_btn.onclick = function(){
             $(this).unbind('mouseleave');
             TweenMax.to(this,0.5,{autoAlpha:0,ease:Linear.easeNone})
@@ -181,6 +191,7 @@ function racerModule(){
             playTimes++;
         };
     };/* end of load cars */
+
 // draw track
     function drawTrack(){
 // start/end line
@@ -220,7 +231,9 @@ function racerModule(){
         $(section_racer).fullscreen();
     }
 };
+
 racerModule();
+
 // FADE IN WHEN DOCUMENT IS READY
 var readyStateCheckInterval = setInterval(function() {
     if (document.readyState === "complete") {

@@ -1,3 +1,2 @@
-<?php include_partial('sales/months') ?>
+<h1><?php echo $selected_user; ?>'s </h1>
 
-These are the stats!

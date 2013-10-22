@@ -8,18 +8,12 @@
  * @author     Duncan Watson duncan@duncanwatson.com
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class salesActions extends sfActions
+class salesActions extends myActions
 {
-    // $this->getUser()->getAttribute('selected_user')
 
   public function executeIndex(sfWebRequest $request)
   {
-
-    if ($request->getParameter('sale_id')!=null)
-        $this->getUser()->setAttribute('selected_user', $request->getParameter('sale_id') );
-
         $this->days  = Doctrine::getTable('Day')->allMyDays($this->getUser()->getAttribute('selected_user'));
-
 
   }
 

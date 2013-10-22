@@ -24,7 +24,7 @@
     <div class="row-fluid">
         <div class="span3">UK Sales Admin</div>
         <div class="span3">User: George</div>
-        <div class="span3"><?php // echo link_to('Logout', 'sf_guard_signout') ?></div>
+        <div class="span3"><?php echo link_to('Logout', 'sf_guard_signout') ?></div>
     </div>
 
 

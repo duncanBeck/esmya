@@ -1,5 +1,14 @@
 <?php
 
-class myUser extends sfBasicSecurityUser
+class myUser extends sfGuardSecurityUser
 {
+  public function signOut(){
+      parent::signOut();
+
+      $this->setAttribute('selected_user', '' );
+
+  }
+
+
+
 }

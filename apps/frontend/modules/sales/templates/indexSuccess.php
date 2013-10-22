@@ -1,4 +1,4 @@
-<h1><?php echo $days[0]->getSalesPerson()->getName(); ?>'s Sales Figures</h1>
+<h1><?php echo $selected_user; ?>'s Sales Figures</h1>
 
 <table>
   <thead>

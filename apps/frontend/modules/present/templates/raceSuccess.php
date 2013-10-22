@@ -17,6 +17,7 @@
     <div class="black" id="year">
         <div class="container">
             <ul id="month_selection" class="list-inline">
+                <li class="col-md-1"><a href="<?php  echo url_for('people') ?>?month_code=jan&month_id=1">Back to Dashboard | </a></li>
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=jan&month_id=1">Jan</a></li>
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=feb&month_id=2">Feb</a></li>
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=mar&month_id=3">Mar</a></li>
@@ -24,7 +25,7 @@
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=may&month_id=5">May</a></li>
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=jun&month_id=6">Jun</a></li>
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=jul&month_id=7">Jul</a></li>
-                <li class="col-md-1 active"><a href="<?php  echo url_for('race') ?>?month_code=aug&month_id=8">Aug</a></li>
+                <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=aug&month_id=8">Aug</a></li>
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=sep&month_id=9">Sep</a></li>
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=oct&month_id=10">Oct</a></li>
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=nov&month_id=11">Nov</a></li>

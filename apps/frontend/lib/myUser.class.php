@@ -6,7 +6,6 @@ class myUser extends sfGuardSecurityUser
       parent::signOut();
 
       $this->setAttribute('selected_user', '' );
-      $this->forward('present/race');
   }
 
 

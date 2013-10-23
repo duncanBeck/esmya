@@ -5,7 +5,7 @@
 <?php // var_dump($stats); ?>
 
 <div id=sales_dashboard class=sales_d_week>
-    <p/>     Week 2/ total week
+    <p/>     Week <?php echo date("W"); ?>/ total week
 
     <p/>        total actual sales
     <p/>            <?php echo $sales->getTotalsales(); ?>

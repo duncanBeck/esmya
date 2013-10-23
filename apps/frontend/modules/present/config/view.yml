@@ -2,5 +2,8 @@ raceSuccess:
   has_layout: false
 
 
+statsSuccess:
+  has_layout: false
+
 raceJSONSuccess:
   has_layout: false

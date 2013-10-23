@@ -156,13 +156,8 @@ function racerModule(){
             carAni[i] = new TweenMax(cars[i].container, cars[i].speed, {bezier:{type:"cubic",curviness:1.2, values:track,autoRotate:true},ease:Linear.easeNone,repeat:-1});
 // sets car position
             TweenMax.to(carAni[i],0,{timeScale:0,progress:track_startPosition});
-
-
         };
-        carAni[0].onclick(function() {
 
-          alert('hi');
-        })
         var playTimes = 0;
         var showPlayBtn = function(){
             TweenMax.to(play_btn,0.5,{autoAlpha:1,ease:Linear.easeNone});
@@ -177,14 +172,14 @@ function racerModule(){
             for (i=0;i<cars.length;i++){
                 if (playTimes != 0) {
                     TweenMax.to(carAni[i],0,{timeScale:0,progress:track_startPosition});
-                };
+                }
                 /* plays the car */
                 TweenMax.to(carAni[i],4,{timeScale:1,delay:1});
                 /* stops the car */
                 (function(){
                     TweenMax.to(carAni[i],cars[i].speed/2,{timeScale:0,delay:(cars[i].speed+1)*(laps)});
                 }());
-            };
+            }
             var lastCarComplete = (cars[cars.length-1].speed+cars.length)*(laps)-10;
 //console.log(lastCarComplete)
             TweenMax.delayedCall(lastCarComplete,showPlayBtn);

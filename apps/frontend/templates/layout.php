@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_stylesheets() ?>
     <link href="/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/bootstrap_old/css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/js/jquery-1.10.2.min.js"></script>
 
@@ -20,12 +20,6 @@
     <div class="span12">
     </div>
 
-    <!--  top row with basic info and logins -->
-    <div class="row-fluid">
-        <div class="span3">UK Sales Admin</div>
-        <div class="span3">User: George</div>
-        <div class="span3"><?php echo link_to('Logout', 'sf_guard_signout') ?></div>
-    </div>
 
 
     <!-- the row for the navigation -->
@@ -42,11 +36,12 @@
 
                                if ($sf_user->getGuardUser()->getSalesPerson()->getIsAdmin()==1): ?>
                                     <li >  <a href="<?php  echo url_for('people') ?>">People</a></li>
-                            <?php endif ?>
-                            <li >  <a href="<?php  echo url_for('target') ?>">Targets</a></li>
+                                    <li >  <a href="<?php  echo url_for('target') ?>">Targets</a></li>
+                               <?php endif ?>
 
                             <li >  <a href="<?php  echo url_for('stats') ?>">Stats</a></li>
-                            <li >  <a href="<?php  echo url_for('race') ?>">Race</a></li>
+                            <li >  <a href="<?php  echo url_for('race') ?>">Race</a>
+                            <li > <?php echo link_to('Logout', 'sf_guard_signout') ?></li>
 
 
                         </ul>

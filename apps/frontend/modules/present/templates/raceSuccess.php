@@ -1,23 +1,10 @@
-<!doctype html>
-<html>
-<head>
-    <title>ESMYA</title>
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/racer_module.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700' rel='stylesheet' type='text/css'>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-</head>
-<body>
-<div>
-<!-- nav -->
+<?php include_partial('present/header'); ?>
 
 
     <!-- year -->
-    <div class="black" id="year">
+    <nav class="black" id="year">
         <div class="container">
             <ul id="month_selection" class="list-inline">
-                <li class="col-md-1"><a href="<?php  echo url_for('people') ?>?month_code=jan&month_id=1">Back to Dashboard | </a></li>
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=jan&month_id=1">Jan</a></li>
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=feb&month_id=2">Feb</a></li>
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=mar&month_id=3">Mar</a></li>
@@ -32,7 +19,16 @@
                 <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=dec&month_id=12">Dec</a></li>
             </ul>
         </div>
-    </div>
+        <div class="container">
+            <ul id="year_selection" class="list-inline">
+                <li class="col-md-1"><a href="<?php  echo url_for('people') ?>">Back to Dashboard | </a></li>
+                <li class="col-md-1">2013</li>
+            </ul>
+        </div>
+
+
+
+    </nav>
 
 <!-- track -->
 <div class="black" id="track">
@@ -56,14 +52,19 @@
     </div>
 </div>
 
+
 <!-- timer -->
 <div class="black" id="timer">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="pull-left">05:02:24:19
-                    <small>TIME LEFT UNTIL NEXT RACE</small>
-                </h1>
+                <p id="countdown" class="pull-left black">
+                    TIME LEFT UNTIL NEXT RACE:
+                    <span class="days">00</span>:
+                    <span class="hours">00</span>:
+                    <span class="minutes">00</span>:
+                    <span class="seconds">00</span>
+                </p>
                 <div id="FS_trigger"><img src="/images/fullscreen.png" class="pull-right" style="margin-top: 12px;"></div>
             </div>
         </div>
@@ -114,8 +115,50 @@
 <script src="/js/jquery-1.10.2.min.js"></script>
 <script src="/js/greensock/TweenMax.min.js"></script>
 <script src="/js/jquery.fullscreen-0.3.5.min.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="/js/charts.js"></script>
 <script src="/js/racer.module.js"></script>
+<script src="/js/countdown.js"></script>
+
+<?php
+$d = new DateTime();
+$d->modify( 'first day of next month' );
+$firstOfMonth = $d->format( 'd F Y H:i:s' );
+?>
+<script>
+
+    $(document).ready(function(){
+        $("#countdown").countdown({
+                    date: "<?php echo $firstOfMonth; ?>",
+                    format: "on"
+                },
+
+                function() {  });
+
+
+        var url = window.location;
+
+       // console.log(url);
+// Will also work for relative and absolute hrefs
+        $('ul#month_selection a').filter(function() {
+        //    console.log(this.href);
+
+            return this.href == url;
+        }).parent().addClass('active');
+
+
+    });
+
+</script>
+<?php /*
+var url = window.location;
+// Will only work if string in href matches with location
+$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+
+// Will also work for relative and absolute hrefs
+$('ul.nav a').filter(function() {
+return this.href == url;
+}).parent().addClass('active');
+*/
+?>
+
 </body>
 </html>

@@ -46,7 +46,7 @@ target:
 # default rules
 homepage:
   url:   /
-  param: { module: people, action: index }
+  param: { module: present, action: race }
 
 # generic rules
 # please, remove them by adding more specific rules

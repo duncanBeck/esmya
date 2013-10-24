@@ -100,3 +100,26 @@ $(function () {
 
 
 });
+
+
+
+$(document).ready(function() {
+
+    var options = {
+        chart: {
+            renderTo: 'test_chart',
+            type: 'pie',
+            backgroundColor: '#F2F2F2'
+        },
+        credits: false,
+        series: [{}]
+    };
+
+    $.getJSON('chart_data', function(data) {
+        options.series[0].data = data;
+        var chart = new Highcharts.Chart(options);
+    });
+
+
+
+});

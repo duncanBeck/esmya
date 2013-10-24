@@ -14,6 +14,9 @@ class presentActions extends myActions
 
     public function executeStats(sfWebRequest $request)
     {
+        $this->month = date("F", mktime(0, 0, 0, $request->getParameter('month_id'), 10));
+
+
         $this->sales  = Doctrine::getTable('SalesPerson')->totalSalesUpToTheWeekForOneSalePerson  (date("Y-m-d H:i:s"), $this->selected_user->getId() , '2013')->getFirst();
         $this->target  = Doctrine::getTable('SalesPerson')->totalTargetUpToTheWeekForOneSalePerson  (date("Y-m-d H:i:s"), $this->selected_user->getId() , '2013')->getFirst();
     }
@@ -58,5 +61,25 @@ class presentActions extends myActions
         ');
 
     }
+
+
+    public function executeChartData(sfWebRequest $request)
+    {
+
+
+        sfConfig::set('sf_web_debug', false);
+
+        $this->getResponse()->setHttpHeader('Content-type', 'application/json');
+
+        return $this->renderText('
+        [
+[1,86],
+[2,14]
+]
+        ');
+
+    }
+
+
 
 }

@@ -15,6 +15,9 @@ function racerModule(){
     var car;
     var json;
     var jsonUrl = "/race_json";
+    var audioStart;
+    var audioMiddle;
+
 //tracks
     /* TRACK 1*/
     var track_1_raw = [71,383,71,232,193,110,344,110,344,110,937,110,937,110,1088,110,1210,232,1210,383,1210,383,1210,383,1210,383,1210,534,1088,656,937,656,937,656,344,656,344,656,193,656,71,534,71,383,71,383,71,383,71,383];
@@ -150,6 +153,7 @@ function racerModule(){
 // load cars
 
     function loadCars(){
+        audioLoad();
         var carAni = [];
         for (i=0;i<cars.length;i++){
             /* master animation definition */
@@ -162,11 +166,41 @@ function racerModule(){
         var showPlayBtn = function(){
             TweenMax.to(play_btn,0.5,{autoAlpha:1,ease:Linear.easeNone});
             $(play_btn).on('mouseover',function(){TweenMax.to(this,0.5,{autoAlpha:0.5});}).on('mouseleave',function(){TweenMax.to(this,0.5,{autoAlpha:1});});
+            audioMiddle.pause();
         }
 
+
+        function audioLoad () {
+            audioStart = document.createElement('audio');
+            audioStart.setAttribute('src', '/assets/car_start.ogg');
+            //audioElement.load()
+
+
+            audioMiddle = document.createElement('audio');
+            audioMiddle.setAttribute('src', '/assets/cars_drive_by.ogg');
+            //audioElement.load()
+
+
+            //   $.get();
+
+            audioStart.addEventListener("ended", function() {
+                audioMiddle.play();
+            });
+
+
+            audioMiddle.addEventListener("ended", function() {
+                audioMiddle.play();
+            });
+        }
+
+
+
         showPlayBtn();
+        audioLoad();
 
         play_btn.onclick = function(){
+
+            audioStart.play();
             $(this).unbind('mouseleave');
             TweenMax.to(this,0.5,{autoAlpha:0,ease:Linear.easeNone})
             for (i=0;i<cars.length;i++){
@@ -186,6 +220,8 @@ function racerModule(){
             playTimes++;
         };
     };/* end of load cars */
+
+
 
 // draw track
     function drawTrack(){
@@ -235,5 +271,41 @@ var readyStateCheckInterval = setInterval(function() {
         var section_racer = document.getElementById('section_racer');
         TweenMax.to(section_racer,0.5,{autoAlpha:1,delay:0.5})
         clearInterval(readyStateCheckInterval);
+  //      showPlayBtn();
     };
 }, 10);
+
+
+
+/*
+ You can control audio by clicking these button:
+
+ <div class="play">Play</div>
+
+ <div class="pause">Stop</div>
+
+ And you must put this script to <body>
+
+ <script>
+ $(document).ready(function() {
+ var audioElement = document.createElement('audio');
+ audioElement.setAttribute('src', 'audio.mp3');
+ audioElement.setAttribute('autoplay', 'autoplay');
+ //audioElement.load()
+
+ $.get();
+
+ audioElement.addEventListener("load", function() {
+ audioElement.play();
+ }, true);
+
+ $('.play').click(function() {
+ audioElement.play();
+ });
+
+ $('.pause').click(function() {
+ audioElement.pause();
+ });
+ });
+ </script>
+ */

@@ -7,7 +7,7 @@ function racerModule(){
     var play_btn = document.getElementById('play_btn');
     var FS_trigger = document.getElementById('FS_trigger');
     var AvgLapDuration = 7.2; // in seconds; the lower the number, the faster the race
-    var laps = 2;
+    var laps = 1;
     var track;
     var track_startLine = 0.1;
     var track_startPosition = 0.075;
@@ -15,8 +15,10 @@ function racerModule(){
     var car;
     var json;
     var jsonUrl = "/race_json";
-    var audioStart;
-    var audioMiddle;
+    var audioStart = [];
+    var audioMiddle = [];
+    var carAni = [];
+
 
 //tracks
     /* TRACK 1*/
@@ -91,6 +93,8 @@ function racerModule(){
     for(var i=0; i < track_12_raw.length; i+=2){
         track_12.push({x:parseInt(track_12_raw[i]),y:parseInt(track_12_raw[i+1])});
     };
+
+
 // LOAD DATA
     $.getJSON(jsonUrl,function(data) {
         json = data;
@@ -154,23 +158,36 @@ function racerModule(){
 
     function loadCars(){
         audioLoad();
-        var carAni = [];
+
         for (i=0;i<cars.length;i++){
+
+
+
+            audioStart[i] = document.createElement('audio');
+            audioStart[i].setAttribute('src', '/assets/car_start.ogg');
+            //audioElement.load()
+
+
+            audioMiddle[i] = document.createElement('audio');
+            audioMiddle[i].setAttribute('src', '/assets/cars_drive_by.ogg');
+            audioMiddle[i].loop=true;
+
             /* master animation definition */
-            carAni[i] = new TweenMax(cars[i].container, cars[i].speed, {bezier:{type:"cubic",curviness:1.2, values:track,autoRotate:true},ease:Linear.easeNone,repeat:-1});
-// sets car position
+            carAni[i] = new TweenMax(cars[i].container, cars[i].speed, {bezier:{type:"cubic",curviness:1.2, values:track,autoRotate:true},ease:Linear.easeNone, repeat: laps});
+
+            carAni[i].eventCallback("onStart", function () { audioMiddle[i].play() });
+            carAni[i].eventCallback("onComplete", function () { alert ('hi'); audioMiddle[i].loop = false; audioMiddle[i].pause(); audioMiddle[i].currentTime = 0; audioStart[i].play(); });
+
+            // sets car position
             TweenMax.to(carAni[i],0,{timeScale:0,progress:track_startPosition});
+
+
         };
 
         var playTimes = 0;
-        var showPlayBtn = function(){
-            TweenMax.to(play_btn,0.5,{autoAlpha:1,ease:Linear.easeNone});
-            $(play_btn).on('mouseover',function(){TweenMax.to(this,0.5,{autoAlpha:0.5});}).on('mouseleave',function(){TweenMax.to(this,0.5,{autoAlpha:1});});
-            audioMiddle.pause();
-        }
-
 
         function audioLoad () {
+            /*
             audioStart = document.createElement('audio');
             audioStart.setAttribute('src', '/assets/car_start.ogg');
             //audioElement.load()
@@ -191,37 +208,29 @@ function racerModule(){
             audioMiddle.addEventListener("ended", function() {
                 audioMiddle.play();
             });
+        */
         }
 
+        audioLoad(); // putting it here as there is an audio pause in showPlayBtn
 
 
-        showPlayBtn();
-        audioLoad();
 
-        play_btn.onclick = function(){
-
-            audioStart.play();
-            $(this).unbind('mouseleave');
-            TweenMax.to(this,0.5,{autoAlpha:0,ease:Linear.easeNone})
-            for (i=0;i<cars.length;i++){
-                if (playTimes != 0) {
-                    TweenMax.to(carAni[i],0,{timeScale:0,progress:track_startPosition});
-                }
-                /* plays the car */
-                TweenMax.to(carAni[i],4,{timeScale:1,delay:1});
-                /* stops the car */
-                (function(){
-                    TweenMax.to(carAni[i],cars[i].speed/2,{timeScale:0,delay:(cars[i].speed+1)*(laps)});
-                }());
-            }
-            var lastCarComplete = (cars[cars.length-1].speed+cars.length)*(laps)-10;
-//console.log(lastCarComplete)
-            TweenMax.delayedCall(lastCarComplete,showPlayBtn);
-            playTimes++;
-        };
+        runTheMiddle();
     };/* end of load cars */
 
 
+    var showPlayBtn = function(){
+        TweenMax.to(play_btn,0.5,{autoAlpha:1,ease:Linear.easeNone});
+        $(play_btn).on('mouseover',function(){TweenMax.to(this,0.5,{autoAlpha:0.5});}).on('mouseleave',function(){TweenMax.to(this,0.5,{autoAlpha:1});});
+        resultsOverlay();
+    }
+
+
+    function resultsOverlay() {
+
+    //    alert('hey it results');
+
+    }
 
 // draw track
     function drawTrack(){
@@ -257,10 +266,42 @@ function racerModule(){
         };
         trackLineOuter.stroke();
     }; /*end of draw track*/
+
+    function runTheMiddle() {
+        var playTimes;
+        $(play_btn).unbind('mouseleave');
+        TweenMax.to(play_btn,0.5,{autoAlpha:0,ease:Linear.easeNone})
+        for (i=0;i<cars.length;i++){
+            if (playTimes != 0) {
+                TweenMax.to(carAni[i],0,{timeScale:0,progress:track_startPosition});
+            }
+            /* plays the car */
+            TweenMax.to(carAni[i],0,{timeScale:1,delay:1});
+            /* stops the car */
+            (function(){
+            //     TweenMax.to(carAni[i],cars[i].speed/2,{timeScale:0,delay:(cars[i].speed+1)*(laps)});
+
+            }());
+        }
+        var lastCarComplete = (cars[cars.length-1].speed+cars.length)*(laps)-10;
+    //console.log(lastCarComplete)
+        TweenMax.delayedCall(lastCarComplete,showPlayBtn);
+        playTimes++;
+    }
+
+
+    play_btn.onclick = function(){
+        runTheMiddle();
+    };
+
+
 // Full Screen trigger
     FS_trigger.onclick = function(){
         $(section_racer).fullscreen();
     }
+
+
+
 };
 
 racerModule();
@@ -271,7 +312,6 @@ var readyStateCheckInterval = setInterval(function() {
         var section_racer = document.getElementById('section_racer');
         TweenMax.to(section_racer,0.5,{autoAlpha:1,delay:0.5})
         clearInterval(readyStateCheckInterval);
-  //      showPlayBtn();
     };
 }, 10);
 

@@ -105,7 +105,6 @@
                     <li><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></li>
                 </ol>
                 <p>&nbsp;</p>
-                <p><a href="#">SIGN UP AND RACE NOW &#9654;</a></p>
             </div>
         </div>
     </div>
@@ -114,6 +113,8 @@
 
 <script src="/js/jquery-1.10.2.min.js"></script>
 <script src="/js/greensock/TweenMax.min.js"></script>
+<script src="/js/greensock/TimelineLite.min.js"></script>
+
 <script src="/js/jquery.fullscreen-0.3.5.min.js"></script>
 <script src="/js/racer.module.js"></script>
 <script src="/js/countdown.js"></script>

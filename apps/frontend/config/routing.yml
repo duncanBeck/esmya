@@ -5,6 +5,10 @@ stats:
   url:   /stats
   param: { module: present, action: stats }
 
+monthly_stats:
+  url:   /monthly_stats
+  param: { module: present, action: monthlyStats }
+
 chart_data:
   url:   /chart_data
   param: { module: present, action: chartData }

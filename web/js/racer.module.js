@@ -6,7 +6,7 @@ function racerModule(){
     var cars_holder = document.getElementById('cars_holder');
     var play_btn = document.getElementById('play_btn');
     var FS_trigger = document.getElementById('FS_trigger');
-    var AvgLapDuration = 7.2; // in seconds; the lower the number, the faster the race
+    var AvgLapDuration = 2; // in seconds; the lower the number, the faster the race
     var laps = 1;
     var track;
     var track_startLine = 0.1;
@@ -176,7 +176,7 @@ function racerModule(){
             carAni[i] = new TweenMax(cars[i].container, cars[i].speed, {bezier:{type:"cubic",curviness:1.2, values:track,autoRotate:true},ease:Linear.easeNone, repeat: laps});
 
             carAni[i].eventCallback("onStart", function () { audioMiddle[i].play() });
-            carAni[i].eventCallback("onComplete", function () { alert ('hi'); audioMiddle[i].loop = false; audioMiddle[i].pause(); audioMiddle[i].currentTime = 0; audioStart[i].play(); });
+
 
             // sets car position
             TweenMax.to(carAni[i],0,{timeScale:0,progress:track_startPosition});
@@ -188,27 +188,27 @@ function racerModule(){
 
         function audioLoad () {
             /*
-            audioStart = document.createElement('audio');
-            audioStart.setAttribute('src', '/assets/car_start.ogg');
-            //audioElement.load()
+             audioStart = document.createElement('audio');
+             audioStart.setAttribute('src', '/assets/car_start.ogg');
+             //audioElement.load()
 
 
-            audioMiddle = document.createElement('audio');
-            audioMiddle.setAttribute('src', '/assets/cars_drive_by.ogg');
-            //audioElement.load()
+             audioMiddle = document.createElement('audio');
+             audioMiddle.setAttribute('src', '/assets/cars_drive_by.ogg');
+             //audioElement.load()
 
 
-            //   $.get();
+             //   $.get();
 
-            audioStart.addEventListener("ended", function() {
-                audioMiddle.play();
-            });
+             audioStart.addEventListener("ended", function() {
+             audioMiddle.play();
+             });
 
 
-            audioMiddle.addEventListener("ended", function() {
-                audioMiddle.play();
-            });
-        */
+             audioMiddle.addEventListener("ended", function() {
+             audioMiddle.play();
+             });
+             */
         }
 
         audioLoad(); // putting it here as there is an audio pause in showPlayBtn
@@ -228,7 +228,7 @@ function racerModule(){
 
     function resultsOverlay() {
 
-    //    alert('hey it results');
+        //    alert('hey it results');
 
     }
 
@@ -269,6 +269,8 @@ function racerModule(){
 
     function runTheMiddle() {
         var playTimes;
+        var thisCar = [];
+        var i;
         $(play_btn).unbind('mouseleave');
         TweenMax.to(play_btn,0.5,{autoAlpha:0,ease:Linear.easeNone})
         for (i=0;i<cars.length;i++){
@@ -279,15 +281,26 @@ function racerModule(){
             TweenMax.to(carAni[i],0,{timeScale:1,delay:1});
             /* stops the car */
             (function(){
-            //     TweenMax.to(carAni[i],cars[i].speed/2,{timeScale:0,delay:(cars[i].speed+1)*(laps)});
-
+                thisCar[i] = TweenMax.to(carAni[i],cars[i].speed/2,{timeScale:0,delay:(cars[i].speed+1)*(laps)});
             }());
         }
+
+        thisCar[cars.length-1].eventCallback("onComplete", finishRace);
+
+        function finishRace()  {
+            alert ('hi');
+            for (i=0;i<cars.length;i++){
+                audioMiddle[i].loop = false; audioMiddle[i].pause(); audioMiddle[i].currentTime = 0; audioStart[i].play();
+            }
+        }
+
         var lastCarComplete = (cars[cars.length-1].speed+cars.length)*(laps)-10;
-    //console.log(lastCarComplete)
+        //console.log(lastCarComplete)
         TweenMax.delayedCall(lastCarComplete,showPlayBtn);
         playTimes++;
     }
+
+
 
 
     play_btn.onclick = function(){

@@ -12,6 +12,7 @@ class presentActions extends myActions
 {
 
 
+
     public function executeStats(sfWebRequest $request)
     {
         $this->month = date("F", mktime(0, 0, 0, $request->getParameter('month_id'), 10));
@@ -79,6 +80,60 @@ class presentActions extends myActions
         ');
 
     }
+
+
+
+    public function executeMonthlyStats(sfWebRequest $request)
+    {
+
+        // monthly stats by year for one salesperson.
+
+        $salesByMonth =  Doctrine::getTable('Day')->monthlySalesForOneSalespersonForAYear('2013', $this->selected_user->getId());
+
+
+        foreach ($salesByMonth as $month) {
+            foreach ($month as $key => $element) {
+                echo $key,$element;
+            }
+        }
+
+
+        sfConfig::set('sf_web_debug', false);
+
+        $this->getResponse()->setHttpHeader('Content-type', 'application/json');
+
+        return $this->renderText('
+[
+            {
+                "monthName": "January",
+                "yearName": 2013,
+                "actualSales": 141,
+                "targetTotal": 120,
+                "percentageEnd" : 87
+            },
+            {
+                "monthName": "February",
+                "yearName": "2013",
+                "actualSales": 14,
+                "targetTotal": 150,
+                "percentageEnd" : 90
+            },
+
+            {
+                "monthName": "March",
+                "yearName": "2013",
+                "actualSales": 91,
+                "targetTotal": 170,
+                "percentageEnd" : 160
+            }
+            ]
+
+
+
+        ');
+
+    }
+
 
 
 

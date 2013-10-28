@@ -71,6 +71,34 @@ class DayTable extends Doctrine_Table
     }
 
 
+    public function monthlySalesForOneSalespersonForAYear ($year, $salesperson_id) {
+
+
+
+        // change the first group  by to s.name if you want to see the individuals
+
+        settype($s_date, "string");
+        settype($f_date, "string");
+
+        $s_date = $year."-01-01";
+        $f_date = ($year<date('Y'))? $year.'12-31 23:59:59' : date('Y-m-d');
+
+        $q = Doctrine_Query::create()
+            ->select('MONTH(d.sales_date ) AS Month, SUM(d.actual_sales ) AS units_sold, d.id,s.id')
+            ->from('Salesperson s')
+            ->innerJoin('s.Days d')
+            ->where ('s.id = ?', $salesperson_id)
+            ->andWhere('d.sales_date > "'.$s_date.'"')
+            ->andWhere('d.sales_date < "'.$f_date.'" ')
+            ->groupBy('MONTH (sales_date)')
+            ->orderBy('Month ASC');
+        ;
+         echo $q->getSqlQuery();
+
+        return $q->execute();
+    }
+
+
 
 }
 /*

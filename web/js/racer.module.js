@@ -137,7 +137,7 @@ function racerModule(){
                 car.start_position = json.data[i].start_position;
                 car.finish_position = json.data[i].finish_position;
                 car.sales = json.data[i].sales;
-                car.div = "<div id='car_container"+[i]+"' class='car_container car_"+car.country_id+" "+car.country+"'></div>";
+                car.div = "<div id='car_container"+[i]+"' class='car_container car_"+car.country_id+" "+car.country+"'></div>"; // this gives the graphic by class
                 car.container = 'car_container'+[i];
                 car.speed = (AvgLapDuration * car.finish_position / json.data.length) + (AvgLapDuration/1.2);
                 cars.push(car);// adds to the array of cars
@@ -226,15 +226,10 @@ function racerModule(){
     var showPlayBtn = function(){
         TweenMax.to(play_btn,0.5,{autoAlpha:1,ease:Linear.easeNone});
         $(play_btn).on('mouseover',function(){TweenMax.to(this,0.5,{autoAlpha:0.5});}).on('mouseleave',function(){TweenMax.to(this,0.5,{autoAlpha:1});});
-        resultsOverlay();
     }
 
 
-    function resultsOverlay() {
 
-        //    alert('hey it results');
-
-    }
 
 // draw track
     function drawTrack(){
@@ -270,9 +265,9 @@ function racerModule(){
         };
         trackLineOuter.stroke();
     }; /*end of draw track*/
+    var playTimes = 0;
 
     function runTheMiddle() {
-        var playTimes;
         var thisCar = [];
         var i;
         $(play_btn).unbind('mouseleave');

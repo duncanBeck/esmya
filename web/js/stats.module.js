@@ -9,7 +9,13 @@ var options = {
         text: 'Month Sales'
     },
     xAxis: {
-        categories: []
+        categories: [],
+        labels: {
+            formatter: function() {
+                return '<a id="month_selector" href="#" data-month-id="' +this.value +'">'+
+                    this.value +'</a>';
+            }
+        }
     },
     yAxis: {
         title: {

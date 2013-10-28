@@ -1,4 +1,5 @@
 var months = [];
+var firstTime =  true;
 var options = {
     chart: {
         type: 'column',
@@ -30,6 +31,27 @@ var options = {
     }]
 };
 
+function loadStats() {
+    $.ajax({
+        type: 'GET',
+        url: 'monthly_stats',
+        dataType: 'json',
+        data: {},
+        async: false,
+        success: function(data) {
+            months = data;
+            console.log(data.length);
+            for (i = 0; i < data.length; i += 1) {
+                options.xAxis.categories.push(months[i].monthName);
+                options.series[0].data.push(months[i].actualSales);
+                options.series[1].data.push(months[i].targetTotal);
+
+            }
+        }
+
+    })
+};
+/*
     $.getJSON('monthly_stats', function(data) {
                 //  console.log(data);
 
@@ -47,23 +69,30 @@ console.log(data.length);
             var err = textStatus + ", " + error;
             console.log( "Request Failed: " + err );
         });
+}
+*/
 
     function setTemplate(month_id) {
 
    //     console.log(month_id);
-        if (month_id=='undefined') month_id=0;
         var template = $('#monthlyStats').html();
         var html = Mustache.to_html(template, months[month_id-1]);
         $('#sales_dashboard').html(html);
     }
 
     function setChart() {
-        console.log(months[0].actualSales);
+//        console.log(months[0].actualSales);
         var chart = new Highcharts.Chart(options);
     }
 
 
 $(document).ready(function(){
+loadStats();
+if (firstTime) {
+    setTemplate(1);
+    setChart();
+    firstTime = false;
+}
 
 var menu = $('ul#st_month_selection a');
     menu.click(function(elem) {
@@ -72,7 +101,6 @@ var menu = $('ul#st_month_selection a');
         menu.parent().removeClass('active');
 
         $(this).parent().addClass('active');
-       setChart();
     })
 //    console.log(months);
 });

@@ -93,9 +93,36 @@ class DayTable extends Doctrine_Table
             ->groupBy('MONTH (sales_date)')
             ->orderBy('Month ASC');
         ;
-         echo $q->getSqlQuery();
+//         echo $q->getSqlQuery();
 
-        return $q->execute();
+        return $q->fetchArray();
+    }
+
+    public function monthlyTargetsForOneSalespersonForAYear ($year, $salesperson_id) {
+
+
+
+        // change the first group  by to s.name if you want to see the individuals
+
+        settype($s_date, "string");
+        settype($f_date, "string");
+
+        $s_date = $year."-01-01";
+        $f_date = ($year<date('Y'))? $year.'12-31 23:59:59' : date('Y-m-d');
+
+        $q = Doctrine_Query::create()
+            ->select('MONTH(t.time_period ) AS Month, t.sales_target as target, t.id,s.id')
+            ->from('Salesperson s')
+            ->innerJoin('s.Targets t')
+            ->where ('s.id = ?', $salesperson_id)
+            ->andWhere('t.time_period > "'.$s_date.'"')
+            ->andWhere('t.time_period < "'.$f_date.'" ')
+            ->groupBy('MONTH (time_period)')
+            ->orderBy('Month ASC');
+        ;
+//         echo $q->getSqlQuery();
+
+        return $q->fetchArray();
     }
 
 

@@ -8,7 +8,7 @@ var options = {
         text: 'Month Sales'
     },
     xAxis: {
-        categories: ['Jan', 'Feb']
+        categories: []
     },
     yAxis: {
         title: {
@@ -55,22 +55,12 @@ console.log(data.length);
         var template = $('#monthlyStats').html();
         var html = Mustache.to_html(template, months[month_id-1]);
         $('#sales_dashboard').html(html);
-
-
     }
 
     function setChart() {
         console.log(months[0].actualSales);
         var chart = new Highcharts.Chart(options);
     }
-
-
-
-
-
-
-
-
 
 
 $(document).ready(function(){

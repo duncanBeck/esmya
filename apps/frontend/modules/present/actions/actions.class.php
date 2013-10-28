@@ -91,16 +91,50 @@ class presentActions extends myActions
         $salesByMonth =  Doctrine::getTable('Day')->monthlySalesForOneSalespersonForAYear('2013', $this->selected_user->getId());
 
 
-        foreach ($salesByMonth as $month) {
-            foreach ($month as $key => $element) {
-                echo $key,$element;
-            }
+        $targetByMonth =  Doctrine::getTable('Day')->monthlyTargetsForOneSalespersonForAYear('2013', $this->selected_user->getId());
+// var_dump($salesByMonth[0]);
+/*
+        foreach ($targetByMonth[0]['Targets'] as $key => $value){
+
+            print_r($value);
+
         }
+*/
+// echo $salesByMonth[0]['Month'];
+  //      die;
+
+        for ($i=0;$i<12;$i++) {
+            $month[$i]['monthName'] = date("F", mktime(0, 0, 0, $i+1, 10));
+            $month[$i]['monthNumber'] = $i+1;
+
+            $month[$i]['yearName'] = '2013';
+
+            if (isset($targetByMonth[0]['Targets'][$i]['Month'])) {
+                    $month[$i]['targetTotal'] = (int)$targetByMonth[0]['Targets'][$i]['target'];
+                } else {
+                    $month[$i]['targetTotal'] = 0;
+                }
+
+            if (isset($salesByMonth[0]['Days'][$i]['Month'])) {
+                $month[$i]['actualSales'] = (int)$salesByMonth[0]['Days'][$i]['units_sold'];
+                $month[$i]['percentageEnd'] = ($month[$i]['actualSales']/100)*100;
+
+            } else {
+                $month[$i]['actualSales'] = 0;
+            }
+            }
+
+//        print_r($month);
+
 
 
         sfConfig::set('sf_web_debug', false);
 
         $this->getResponse()->setHttpHeader('Content-type', 'application/json');
+
+return $this->renderText(json_encode($month));
+
+/*
 
         return $this->renderText('
 [
@@ -131,7 +165,7 @@ class presentActions extends myActions
 
 
         ');
-
+*/
     }
 
 

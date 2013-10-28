@@ -18,7 +18,7 @@ function racerModule(){
     var audioStart = [];
     var audioMiddle = [];
     var carAni = [];
-
+    var raceResults ='';
 
 //tracks
     /* TRACK 1*/
@@ -128,6 +128,7 @@ function racerModule(){
                 return 0;
             }
 // get cars info
+            var pos;
             for(i=0;i<json.data.length;i++){
 // grabs data, creates an array of cars;
                 car = new Object();
@@ -141,6 +142,9 @@ function racerModule(){
                 car.speed = (AvgLapDuration * car.finish_position / json.data.length) + (AvgLapDuration/1.2);
                 cars.push(car);// adds to the array of cars
                 cars.sort(compare);/* sorts the cars in starting position order */
+                pos = i+1;
+                raceResults+='<p>'+pos+': '+json.data[i].country+'</p>';
+
             };
             /* add cars to stage, already ordered in starting position */
             for(i=0;i<cars.length;i++){
@@ -288,10 +292,10 @@ function racerModule(){
         thisCar[cars.length-1].eventCallback("onComplete", finishRace);
 
         function finishRace()  {
-            alert ('hi');
             for (i=0;i<cars.length;i++){
                 audioMiddle[i].loop = false; audioMiddle[i].pause(); audioMiddle[i].currentTime = 0; audioStart[i].play();
             }
+            $('#race_results').html(raceResults);
         }
 
         var lastCarComplete = (cars[cars.length-1].speed+cars.length)*(laps)-10;
@@ -304,6 +308,8 @@ function racerModule(){
 
 
     play_btn.onclick = function(){
+        $('#race_results').html('');
+
         runTheMiddle();
     };
 

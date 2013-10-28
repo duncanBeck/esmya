@@ -161,11 +161,8 @@ function racerModule(){
 // load cars
 
     function loadCars(){
-        audioLoad();
 
         for (i=0;i<cars.length;i++){
-
-
 
             audioStart[i] = document.createElement('audio');
             audioStart[i].setAttribute('src', '/assets/car_start.ogg');
@@ -181,43 +178,12 @@ function racerModule(){
 
             carAni[i].eventCallback("onStart", function () { audioMiddle[i].play() });
 
-
             // sets car position
             TweenMax.to(carAni[i],0,{timeScale:0,progress:track_startPosition});
-
 
         };
 
         var playTimes = 0;
-
-        function audioLoad () {
-            /*
-             audioStart = document.createElement('audio');
-             audioStart.setAttribute('src', '/assets/car_start.ogg');
-             //audioElement.load()
-
-
-             audioMiddle = document.createElement('audio');
-             audioMiddle.setAttribute('src', '/assets/cars_drive_by.ogg');
-             //audioElement.load()
-
-
-             //   $.get();
-
-             audioStart.addEventListener("ended", function() {
-             audioMiddle.play();
-             });
-
-
-             audioMiddle.addEventListener("ended", function() {
-             audioMiddle.play();
-             });
-             */
-        }
-
-        audioLoad(); // putting it here as there is an audio pause in showPlayBtn
-
-
 
         runTheMiddle();
     };/* end of load cars */
@@ -281,12 +247,13 @@ function racerModule(){
             /* stops the car */
             (function(){
                 thisCar[i] = TweenMax.to(carAni[i],cars[i].speed/2,{timeScale:0,delay:(cars[i].speed+1)*(laps)});
+                thisCar[i].eventCallback("onComplete", function () {finishRace(i)});
+
             }());
         }
 
-        thisCar[cars.length-1].eventCallback("onComplete", finishRace);
 
-        function finishRace()  {
+        function finishRace(i)  {
             for (i=0;i<cars.length;i++){
                 audioMiddle[i].loop = false; audioMiddle[i].pause(); audioMiddle[i].currentTime = 0; audioStart[i].play();
             }
@@ -304,7 +271,7 @@ function racerModule(){
 
     play_btn.onclick = function(){
         $('#race_results').html('');
-
+        loadCars();
         runTheMiddle();
     };
 

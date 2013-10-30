@@ -1,0 +1,30 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           SalesPerson
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          sales_person
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display: [name, region, is_active, is_admin]
+        object_actions:
+          (D)activate: ~
+          _edit: ~
+
+      filter:
+        class: false
+      form:
+        class: BackendSalesPersonForm
+
+      edit:    ~
+
+      new:     ~

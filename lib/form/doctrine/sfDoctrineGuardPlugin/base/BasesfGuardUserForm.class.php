@@ -28,7 +28,7 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       'last_login'       => new sfWidgetFormDateTime(),
       'created_at'       => new sfWidgetFormDateTime(),
       'updated_at'       => new sfWidgetFormDateTime(),
-      'groups_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup')),
+      'groups_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'SalesPerson')),
       'permissions_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardPermission')),
     ));
 
@@ -46,7 +46,7 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       'last_login'       => new sfValidatorDateTime(array('required' => false)),
       'created_at'       => new sfValidatorDateTime(),
       'updated_at'       => new sfValidatorDateTime(),
-      'groups_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup', 'required' => false)),
+      'groups_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'SalesPerson', 'required' => false)),
       'permissions_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardPermission', 'required' => false)),
     ));
 

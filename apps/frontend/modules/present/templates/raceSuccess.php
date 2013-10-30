@@ -39,7 +39,7 @@
             <div class="play_wrapper">
                 <div class="play_holder">
                     <div id="play_btn"></div>
-                    <div id="race_results" style="position:relative; top:0; left:5; color:red; font-size:28px; z-index:2">result placeholder</div>
+                    <div id="race_results" style="position:relative; top:0; left:5; color:red; font-size:28px; z-index:2"></div>
 
                 </div>
             </div>

@@ -24,11 +24,6 @@ var options = {
     },
     credits: false,
     series: [{
-        events: {
-            click: function(e) {
-                location.href = e.point.options.url;
-            }
-        },
         name: 'Actual',
         data : []
     }, {
@@ -46,7 +41,6 @@ function loadStats() {
         async: false,
         success: function(data) {
             months = data;
-            console.log(data.length);
             for (i = 0; i < data.length; i += 1) {
                 options.xAxis.categories.push(months[i].monthName);
                 options.series[0].data.push(months[i].actualSales);

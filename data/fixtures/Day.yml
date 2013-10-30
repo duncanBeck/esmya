@@ -1,44 +1,44 @@
 Day:
   1:
-    actual_sales:  10
+    actual_sales:  100
     SalesPerson:   George
     sales_date:          '2013-8-10'
 
 
   2:
-    actual_sales:  4
+    actual_sales:  89
     SalesPerson:   George
     sales_date:          '2013-9-11'
 
   3:
-    actual_sales:  500
+    actual_sales:  180
     SalesPerson:   George
     sales_date:          '2013-9-12'
 
 
   22:
-    actual_sales:  4
+    actual_sales:  41
     SalesPerson:   George
     sales_date:          '2013-4-11'
 
   23:
-    actual_sales:  5
+    actual_sales:  52
     SalesPerson:   Steven
     sales_date:          '2013-4-12'
 
   25:
-    actual_sales:  5
+    actual_sales:  55
     SalesPerson:   Dave
     sales_date:          '2013-4-12'
 
 
   14:
-    actual_sales:  555
+    actual_sales:  101
     SalesPerson:   Klaus
     sales_date:          '2013-9-12'
 
   15:
-    actual_sales:  777
+    actual_sales:  134
     SalesPerson:   Klaus
     sales_date:          '2013-7-12'
 

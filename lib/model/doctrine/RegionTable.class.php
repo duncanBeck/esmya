@@ -16,4 +16,59 @@ class RegionTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Region');
     }
+
+
+    public function monthlySalesPerRegionForAYear ($year, $region_id) {
+
+
+
+        // change the first group  by to s.name if you want to see the individuals
+
+        settype($s_date, "string");
+        settype($f_date, "string");
+
+        $s_date = $year."-01-01";
+        $f_date = ($year<date('Y'))? $year.'12-31 23:59:59' : date('Y-m-d');
+
+        $q = Doctrine_Query::create()
+            ->select('MONTH(d.sales_date ) AS Month, SUM(d.actual_sales ) AS units_sold,r.id as region_id, d.id,s.id')
+            ->from('Region r')
+            ->innerJoin('r.SalePeople s')
+            ->leftJoin('s.Days d')
+            ->where ('r.id = ?', $region_id)
+            ->andWhere('d.sales_date >= "'.$s_date.'"')
+            ->andWhere('d.sales_date <= "'.$f_date.'" ')
+            ->groupBy('MONTH (sales_date)')
+            ->orderBy('Month ASC');
+        ;
+//         echo $q->getSqlQuery();
+
+        return $q->fetchArray();
+    }
+
+    public function monthlyTargetsPerRegionForAYear ($year, $region_id) {
+        settype($s_date, "string");
+        settype($f_date, "string");
+
+        $s_date = $year."-01-01";
+        $f_date = ($year<date('Y'))? $year.'12-31 23:59:59' : date('Y-m-d');
+
+        $q = Doctrine_Query::create()
+            ->select('MONTH(t.time_period ) AS Month, SUM(t.sales_target) as target, r.id as region_id, t.id,s.id')
+            ->from('Region r')
+            ->innerJoin('r.SalePeople s')
+            ->leftJoin('s.Targets t')
+            ->where ('r.id = ?', $region_id)
+            ->andWhere('t.time_period >= "'.$s_date.'"')
+            ->andWhere('t.time_period <= "'.$f_date.'" ')
+            ->groupBy('MONTH (time_period)')
+            ->orderBy('Month ASC');
+        ;
+  //       echo $q->getSqlQuery();
+
+        return $q->fetchArray();
+    }
+
+
+
 }

@@ -1,12 +1,12 @@
 Target:
   1:
-    sales_target:  10
+    sales_target:  100
     SalesPerson:   George
     time_period:          '2013-08-01'
 
 
   2:
-    sales_target:  40
+    sales_target:  100
     SalesPerson:   George
     time_period:          '2013-09-01'
 

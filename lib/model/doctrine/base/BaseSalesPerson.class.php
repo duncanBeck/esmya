@@ -12,6 +12,7 @@
  * @property boolean $is_admin
  * @property Region $Region
  * @property sfGuardUser $User
+ * @property Doctrine_Collection $Users
  * @property Doctrine_Collection $Days
  * @property Doctrine_Collection $Targets
  * 
@@ -22,6 +23,7 @@
  * @method boolean             getIsAdmin()   Returns the current record's "is_admin" value
  * @method Region              getRegion()    Returns the current record's "Region" value
  * @method sfGuardUser         getUser()      Returns the current record's "User" value
+ * @method Doctrine_Collection getUsers()     Returns the current record's "Users" collection
  * @method Doctrine_Collection getDays()      Returns the current record's "Days" collection
  * @method Doctrine_Collection getTargets()   Returns the current record's "Targets" collection
  * @method SalesPerson         setName()      Sets the current record's "name" value
@@ -31,6 +33,7 @@
  * @method SalesPerson         setIsAdmin()   Sets the current record's "is_admin" value
  * @method SalesPerson         setRegion()    Sets the current record's "Region" value
  * @method SalesPerson         setUser()      Sets the current record's "User" value
+ * @method SalesPerson         setUsers()     Sets the current record's "Users" collection
  * @method SalesPerson         setDays()      Sets the current record's "Days" collection
  * @method SalesPerson         setTargets()   Sets the current record's "Targets" collection
  * 
@@ -78,6 +81,11 @@ abstract class BaseSalesPerson extends sfDoctrineRecord
         $this->hasOne('sfGuardUser as User', array(
              'local' => 'user_id',
              'foreign' => 'id'));
+
+        $this->hasMany('sfGuardUser as Users', array(
+             'refClass' => 'sfGuardUserGroup',
+             'local' => 'group_id',
+             'foreign' => 'user_id'));
 
         $this->hasMany('Day as Days', array(
              'local' => 'id',

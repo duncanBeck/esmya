@@ -58,6 +58,9 @@ scp root@sales.esmya.com:/home/esmya/webserver ./
   php symfony doctrine:generate-module --with-show --non-verbose-templates frontend people SalesPerson
   php symfony doctrine:generate-module --with-show --non-verbose-templates frontend sales Day
   php symfony doctrine:generate-module --with-show --non-verbose-templates frontend target Target
+  php symfony doctrine:generate-admin backend SalesPerson --module=sales_people
+
+  php symfony doctrine:generate-admin backend sfGuardUser --module=admin_users
 
 
   php symfony doctrine:generate-module --with-show --non-verbose-templates frontend location Location
@@ -159,8 +162,8 @@ wget "http://trac.symfony-project.org/browser/branches/1.4/data/bin/check_config
 
 
         php symfony generate:app frontend
-        php symfony generate:app backend
-        
+
+
         
   php symfony doctrine:generate-module frontend affiliate affiliate --non-verbose-templates
 

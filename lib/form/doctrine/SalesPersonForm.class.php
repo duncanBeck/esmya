@@ -12,5 +12,9 @@ class SalesPersonForm extends BaseSalesPersonForm
 {
   public function configure()
   {
+
+      $this->useFields(array('name','region_id','is_active','is_admin'));
+//     $this->widgetSchema['user_id'] = new  sfWidgetFormInputHidden();
+
   }
 }

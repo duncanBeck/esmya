@@ -1,13 +1,26 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+# this is the individual salespeople
 stats:
   url:   /stats
   param: { module: present, action: stats }
 
-monthly_stats:
+monthly_stats_data:
   url:   /monthly_stats
-  param: { module: present, action: monthlyStats }
+  param: { module: present, action: monthlyIndividualStats }
+
+# this is the monthly regionals
+
+monthly_regional_stats:
+  url:   /regional_stats
+  param: { module: present, action: monthlyRegionalStats }
+
+monthly_regional_stats_data:
+  url:   /regional_stats_data
+  param: { module: present, action: monthlyRegionalStatsData }
+
+
 
 chart_data:
   url:   /chart_data

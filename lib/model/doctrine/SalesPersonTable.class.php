@@ -36,8 +36,8 @@ class SalesPersonTable extends Doctrine_Table
             ->where('s.id = ?', $salesPersonId)
 
 
-            ->andWhere('d.sales_date > "'.$s_date.'"')
-            ->andWhere('d.sales_date < "'.$f_date.'" ');
+            ->andWhere('d.sales_date >= "'.$s_date.'"')
+            ->andWhere('d.sales_date <= "'.$f_date.'" ');
         ;
         // echo $q->getSqlQuery();
 
@@ -61,8 +61,8 @@ class SalesPersonTable extends Doctrine_Table
             ->innerJoin('s.Targets t')
             ->where('s.id = ?', $salesPersonId)
 
-            ->andWhere('t.time_period > "'.$s_date.'"')
-            ->andWhere('t.time_period < "'.$f_date.'" ');
+            ->andWhere('t.time_period >= "'.$s_date.'"')
+            ->andWhere('t.time_period <= "'.$f_date.'" ');
         ;
         // echo $q->getSqlQuery();
 

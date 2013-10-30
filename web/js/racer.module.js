@@ -6,8 +6,8 @@ function racerModule(){
     var cars_holder = document.getElementById('cars_holder');
     var play_btn = document.getElementById('play_btn');
     var FS_trigger = document.getElementById('FS_trigger');
-    var AvgLapDuration = 2; // in seconds; the lower the number, the faster the race
-    var laps = 1;
+    var AvgLapDuration = 3.2; // in seconds; the lower the number, the faster the race
+    var laps = 2;
     var track;
     var track_startLine = 0.1;
     var track_startPosition = 0.075;
@@ -247,13 +247,14 @@ function racerModule(){
             /* stops the car */
             (function(){
                 thisCar[i] = TweenMax.to(carAni[i],cars[i].speed/2,{timeScale:0,delay:(cars[i].speed+1)*(laps)});
-                thisCar[i].eventCallback("onComplete", function () {finishRace(i)});
 
             }());
+
         }
+        thisCar[cars.length-1].eventCallback("onComplete", function () {finishRace()});
 
 
-        function finishRace(i)  {
+        function finishRace()  {
             for (i=0;i<cars.length;i++){
                 audioMiddle[i].loop = false; audioMiddle[i].pause(); audioMiddle[i].currentTime = 0; audioStart[i].play();
             }

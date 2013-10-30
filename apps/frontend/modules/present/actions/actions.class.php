@@ -82,90 +82,147 @@ class presentActions extends myActions
     }
 
 
+    public function executeMonthlyRegionalStats (sfWebRequest $request) {
 
-    public function executeMonthlyStats(sfWebRequest $request)
-    {
-
-        // monthly stats by year for one salesperson.
-
-        $salesByMonth =  Doctrine::getTable('Day')->monthlySalesForOneSalespersonForAYear('2013', $this->selected_user->getId());
+    }
 
 
-        $targetByMonth =  Doctrine::getTable('Day')->monthlyTargetsForOneSalespersonForAYear('2013', $this->selected_user->getId());
-// var_dump($salesByMonth[0]);
-/*
-        foreach ($targetByMonth[0]['Targets'] as $key => $value){
+    public function executeMonthlyRegionalStatsData (sfWebRequest $request) {
+$countriesJSON =array();
+    $countries = Doctrine::getTable('Region')->createQuery('a')->orderBy('name')->execute();
 
-            print_r($value);
+        foreach($countries as $country){
 
-        }
-*/
-// echo $salesByMonth[0]['Month'];
-  //      die;
 
-        for ($i=0;$i<12;$i++) {
-            $month[$i]['monthName'] = date("F", mktime(0, 0, 0, $i+1, 10));
-            $month[$i]['monthNumber'] = $i+1;
+                $salesByMonth =  Doctrine::getTable('Region')->monthlySalesPerRegionForAYear('2013', $country->getId());
+                $targetByMonth =  Doctrine::getTable('Region')->monthlyTargetsPerRegionForAYear('2013', $country->getId());
 
-            $month[$i]['yearName'] = '2013';
+        //        var_dump($salesByMonth);
+        //        var_dump($targetByMonth);
 
-            if (isset($targetByMonth[0]['Targets'][$i]['Month'])) {
-                    $month[$i]['targetTotal'] = (int)$targetByMonth[0]['Targets'][$i]['target'];
-                } else {
-                    $month[$i]['targetTotal'] = 0;
-                }
+        //        print_r($salesByMonth[0]['SalePeople'][0]['Days']);
 
-            if (isset($salesByMonth[0]['Days'][$i]['Month'])) {
-                $month[$i]['actualSales'] = (int)$salesByMonth[0]['Days'][$i]['units_sold'];
-                $month[$i]['percentageEnd'] = ($month[$i]['actualSales']/100)*100;
+        //        print_r($targetByMonth[0]['SalePeople'][0]['Targets']);
 
-            } else {
-                $month[$i]['actualSales'] = 0;
-            }
-            }
+                $month = statsHelper::createSalesTargetsJSON($salesByMonth[0]['SalePeople'],$targetByMonth[0]['SalePeople']);
 
-//        print_r($month);
-
+            $countriesJSON[] = array(
+                    "name" => "$country",
+                    "year" => 2013,
+                    "months"=> $month
+            );
+        } // end for each
 
 
         sfConfig::set('sf_web_debug', false);
 
         $this->getResponse()->setHttpHeader('Content-type', 'application/json');
 
-return $this->renderText(json_encode($month));
+        $countriesJSON = array('countries' => $countriesJSON);
+        return $this->renderText(json_encode($countriesJSON));
 
-/*
-
-        return $this->renderText('
-[
-            {
-                "monthName": "January",
-                "yearName": 2013,
-                "actualSales": 141,
-                "targetTotal": 120,
-                "percentageEnd" : 87
-            },
-            {
-                "monthName": "February",
-                "yearName": "2013",
-                "actualSales": 14,
-                "targetTotal": 150,
-                "percentageEnd" : 90
-            },
-
-            {
-                "monthName": "March",
-                "yearName": "2013",
-                "actualSales": 91,
-                "targetTotal": 170,
-                "percentageEnd" : 160
-            }
+                return $this->renderText('
+     {
+    "countries": [
+        {
+            "name": "uk",
+            "year": 2013,
+            "months": [
+                {
+                    "monthName": "January",
+                    "yearName": 2013,
+                    "actualSales": 141,
+                    "targetTotal": 120,
+                    "percentageEnd": 87
+                },
+                {
+                    "monthName": "February",
+                    "yearName": "2013",
+                    "actualSales": 14,
+                    "targetTotal": 150,
+                    "percentageEnd": 90
+                },
+                {
+                    "monthName": "March",
+                    "yearName": "2013",
+                    "actualSales": 91,
+                    "targetTotal": 170,
+                    "percentageEnd": 160
+                }
             ]
+        },
+        {
+            "name": "Germany",
+            "year": 2013,
+            "months": [
+                {
+                    "monthName": "January",
+                    "yearName": 2013,
+                    "actualSales": 141,
+                    "targetTotal": 120,
+                    "percentageEnd": 87
+                },
+            ]
+        }
+    ]
+}
+                ');
 
 
 
-        ');
-*/
+            }
+
+
+            public function executeMonthlyIndividualStats(sfWebRequest $request)
+            {
+
+                // monthly stats by year for one salesperson.
+
+                $salesByMonth =  Doctrine::getTable('Day')->monthlySalesForOneSalespersonForAYear('2013', $this->selected_user->getId());
+
+
+                $targetByMonth =  Doctrine::getTable('Day')->monthlyTargetsForOneSalespersonForAYear('2013', $this->selected_user->getId());
+
+                $month = statsHelper::createSalesTargetsJSON($salesByMonth,$targetByMonth);
+
+                sfConfig::set('sf_web_debug', false);
+
+                $this->getResponse()->setHttpHeader('Content-type', 'application/json');
+
+        return $this->renderText(json_encode($month));
+
+        /*
+
+                return $this->renderText('
+        [
+                    {
+                        "monthName": "January",
+                        "yearName": 2013,
+                        "actualSales": 141,
+                        "targetTotal": 120,
+                        "percentageEnd" : 87
+                    },
+                    {
+                        "monthName": "February",
+                        "yearName": "2013",
+                        "actualSales": 14,
+                        "targetTotal": 150,
+                        "percentageEnd" : 90
+                    },
+
+                    {
+                        "monthName": "March",
+                        "yearName": "2013",
+                        "actualSales": 91,
+                        "targetTotal": 170,
+                        "percentageEnd" : 160
+                    }
+                    ]
+
+
+
+                ');
+        */
     }
 
 

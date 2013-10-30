@@ -31,8 +31,6 @@ Target:
   relations:
     SalesPerson:        { local: sales_person_id, foreign: id, foreignAlias: Targets }
 
-
-
 Region:
   columns:
     name:               { type: string (32)}

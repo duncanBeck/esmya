@@ -126,7 +126,7 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('sfGuardGroup as Groups', array(
+        $this->hasMany('SalesPerson as Groups', array(
              'refClass' => 'sfGuardUserGroup',
              'local' => 'user_id',
              'foreign' => 'group_id'));

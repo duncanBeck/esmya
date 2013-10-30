@@ -26,6 +26,11 @@ Day:
     SalesPerson:   Steven
     sales_date:          '2013-4-12'
 
+  23:
+    actual_sales:  12
+    SalesPerson:   Steven
+    sales_date:          '2013-1-12'
+
   25:
     actual_sales:  55
     SalesPerson:   Dave
@@ -46,3 +51,8 @@ Day:
     actual_sales:  70
     SalesPerson:   Cornelius
     sales_date:          '2013-9-12'
+
+  100:
+    actual_sales:  60
+    SalesPerson:   Cornelius
+    sales_date:          '2013-1-12'

@@ -7,7 +7,6 @@
     <div class="container">
 
     <ul id="country_menu" class="list-inline">
-        <li class="col-md-1"><a href=# data-month_id="1">UK</a></li>
 
     </ul>
     </div>
@@ -39,7 +38,7 @@
 
 </nav>
 
-<h1>Selected Country </h1>
+<h1 id="country_name"></h1>
 <?php // var_dump($stats); ?>
 
 <div id=sales_dashboard class=sales_d_week>

@@ -39,7 +39,9 @@
                                     <li >  <a href="<?php  echo url_for('target') ?>">Targets</a></li>
                                <?php endif ?>
 
-                            <li >  <a href="<?php  echo url_for('stats') ?>">Stats</a></li>
+                            <li >  <a href="<?php  echo url_for('stats') ?>">My Stats</a></li>
+                            <li >  <a href="<?php  echo url_for('monthly_regional_stats') ?>">Country Stats</a></li>
+
                             <li >  <a href="<?php  echo url_for('race') ?>">Race</a>
                             <li > <?php echo link_to('Logout', 'sf_guard_signout') ?></li>
 

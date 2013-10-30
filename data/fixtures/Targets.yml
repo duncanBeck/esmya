@@ -38,6 +38,11 @@ Target:
     SalesPerson:   Klaus
     time_period:          '2013-07-01'
 
+  16:
+    sales_target:  77
+    SalesPerson:   Dave
+    time_period:          '2013-07-01'
+
   100:
     sales_target:  70
     SalesPerson:   Cornelius

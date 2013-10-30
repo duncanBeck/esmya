@@ -11,6 +11,36 @@ class statsHelper {
             $month[$i]['actualSales'] = 0;
         }
 
+        foreach($salesByMonth as $element) {
+            $month[$element['month']-1]['actualSales'] = (int)$element['units_sold'];
+
+        }
+
+        foreach($targetByMonth as $element) {
+            $month[$element['month']-1]['targetTotal'] = (int)$element['target'];
+        }
+
+        //    if (isset($element['target']) && isset($element['units_sold']))
+        //        $month[$element['Month']-1]['percentageEnd'] = (int)$element['target']/(int)$element['units_sold']*100;
+
+        return $month;
+    }
+
+
+
+    public static function OLDcreateSalesTargetsJSON ($salesByMonth, $targetByMonth) {
+        print_r($targetByMonth);
+
+
+        print_r($salesByMonth);
+die;
+        for ($i=0;$i<12;$i++) {
+            $month[$i]['monthName'] = date("F", mktime(0, 0, 0, $i+1, 10));
+            $month[$i]['monthNumber'] = $i+1;
+            $month[$i]['targetTotal'] = 0;
+            $month[$i]['actualSales'] = 0;
+        }
+
         foreach($salesByMonth[0]['Days'] as $element) {
             $month[$element['Month']-1]['actualSales'] = (int)$element['units_sold'];
 

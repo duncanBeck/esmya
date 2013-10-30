@@ -97,6 +97,10 @@ $countriesJSON =array();
                 $salesByMonth =  Doctrine::getTable('Region')->monthlySalesPerRegionForAYear('2013', $country->getId());
                 $targetByMonth =  Doctrine::getTable('Region')->monthlyTargetsPerRegionForAYear('2013', $country->getId());
 
+  //          print_r($salesByMonth);
+    //        print_r($targetByMonth);
+
+//            die;
         //        var_dump($salesByMonth);
         //        var_dump($targetByMonth);
 
@@ -104,7 +108,7 @@ $countriesJSON =array();
 
         //        print_r($targetByMonth[0]['SalePeople'][0]['Targets']);
 
-                $month = statsHelper::createSalesTargetsJSON($salesByMonth[0]['SalePeople'],$targetByMonth[0]['SalePeople']);
+                $month = statsHelper::createSalesTargetsJSON($salesByMonth,$targetByMonth);
 
             $countriesJSON[] = array(
                     "name" => "$country",

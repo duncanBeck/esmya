@@ -59,6 +59,9 @@ function loadStats() {
        //                 console.log(v.months.length);
     // console.log (coMoData[k]);
 
+                        if (v.months[i].actualSales>0 && v.months[i].targetTotal>0) {
+                            months[k][i].percentageEnd = v.months[i].actualSales / v.months[i].targetTotal *100;
+                        }
 
                         coMoData[k].xAxis.categories.push(v.months[i].monthName);
                         coMoData[k].series[0].data.push(v.months[i].actualSales);

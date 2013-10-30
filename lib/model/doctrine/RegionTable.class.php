@@ -31,7 +31,7 @@ class RegionTable extends Doctrine_Table
         $f_date = ($year<date('Y'))? $year.'12-31 23:59:59' : date('Y-m-d');
 
         $q = Doctrine_Query::create()
-            ->select('MONTH(d.sales_date ) AS Month, SUM(d.actual_sales ) AS units_sold,r.id as region_id, d.id,s.id')
+            ->select('MONTH(d.sales_date ) AS Month, SUM(d.actual_sales ) AS units_sold,r.id as region_id,s.id, d.id')
             ->from('Region r')
             ->innerJoin('r.SalePeople s')
             ->leftJoin('s.Days d')
@@ -41,9 +41,15 @@ class RegionTable extends Doctrine_Table
             ->groupBy('MONTH (sales_date)')
             ->orderBy('Month ASC');
         ;
-//         echo $q->getSqlQuery();
 
-        return $q->fetchArray();
+
+        $query ="SELECT r.id AS r__id, s.id AS s__id, d.id AS d__id, MONTH(d.sales_date) AS month, SUM(d.actual_sales) AS units_sold, r.id AS r__2 FROM region r INNER JOIN sales_person s ON r.id = s.region_id LEFT JOIN day d ON s.id = d.sales_person_id WHERE (r.id = ".$region_id." AND d.sales_date >= '".$s_date."' AND d.sales_date <= '".$f_date."') GROUP BY MONTH (sales_date) ORDER BY month ASC";
+
+
+        $p = Doctrine_Manager::getInstance()->getCurrentConnection();
+        $result = $p->execute($query);
+
+        return $result->fetchAll();
     }
 
     public function monthlyTargetsPerRegionForAYear ($year, $region_id) {
@@ -64,9 +70,15 @@ class RegionTable extends Doctrine_Table
             ->groupBy('MONTH (time_period)')
             ->orderBy('Month ASC');
         ;
-  //       echo $q->getSqlQuery();
 
-        return $q->fetchArray();
+
+
+  $query="SELECT r.id AS r__id, s.id AS s__id, t.id AS t__id, MONTH(t.time_period) AS month, SUM(t.sales_target) AS target, r.id AS r__2 FROM region r INNER JOIN sales_person s ON r.id = s.region_id LEFT JOIN target t ON s.id = t.sales_person_id WHERE (r.id =".$region_id." AND t.time_period >= '".$s_date."' AND t.time_period <= '".$f_date."') GROUP BY MONTH (time_period) ORDER BY month ASC";
+
+        $p = Doctrine_Manager::getInstance()->getCurrentConnection();
+        $result = $p->execute($query);
+
+        return $result->fetchAll();
     }
 
 

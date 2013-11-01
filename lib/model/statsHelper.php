@@ -29,11 +29,7 @@ class statsHelper {
 
 
     public static function OLDcreateSalesTargetsJSON ($salesByMonth, $targetByMonth) {
-        print_r($targetByMonth);
 
-
-        print_r($salesByMonth);
-die;
         for ($i=0;$i<12;$i++) {
             $month[$i]['monthName'] = date("F", mktime(0, 0, 0, $i+1, 10));
             $month[$i]['monthNumber'] = $i+1;

@@ -102,56 +102,82 @@ div {
 
 	/* == UK == */
 	.car_1{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_UK.svg');
 	}
 
 	/* == GERMANY == */
 	.car_2{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_GE.svg');
 	}
 
 	/* == NETHERLANDS == */
 	.car_3{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_NE.svg');
 	}
 	/* == BELGIUM == */
 	.car_4{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_BE.svg');
 	}
 	/* == NORWAY == */
 	.car_5{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_NO.svg');
 	}	
 	/* == DENMARK == */
 	.car_6{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_DE.svg');
 	}
 	/* == FINLAND == */
 	.car_7{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_FI.svg');
 	}
 	/* == SWEDEN== */
 	.car_8{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_SWE.svg');
 	}
 	/* == FRANCE == */
 	.car_9{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_FR.svg');
 	}
 	/* == SPAIN == */
 	.car_10{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_SP.svg');
 	}
 	/* == ITALY == */
 	.car_11{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_IT.svg');
 	}
 	/* == SWITZERLAND == */
 	.car_12{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_SWI.svg');
 	}
 	/* == LUXEMBOURG == */
 	.car_13{
+        transform: scale(1.2);
+        transform-origin: center;
 		background-image:url('/images/cars_LU.svg');
 	}
 

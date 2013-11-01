@@ -11,7 +11,11 @@
 class presentActions extends myActions
 {
 
+    public function  executeLeaderBoard() {
 
+
+
+    }
 
     public function executeStats(sfWebRequest $request)
     {
@@ -97,16 +101,6 @@ $countriesJSON =array();
                 $salesByMonth =  Doctrine::getTable('Region')->monthlySalesPerRegionForAYear('2013', $country->getId());
                 $targetByMonth =  Doctrine::getTable('Region')->monthlyTargetsPerRegionForAYear('2013', $country->getId());
 
-  //          print_r($salesByMonth);
-    //        print_r($targetByMonth);
-
-//            die;
-        //        var_dump($salesByMonth);
-        //        var_dump($targetByMonth);
-
-        //        print_r($salesByMonth[0]['SalePeople'][0]['Days']);
-
-        //        print_r($targetByMonth[0]['SalePeople'][0]['Targets']);
 
                 $month = statsHelper::createSalesTargetsJSON($salesByMonth,$targetByMonth);
 
@@ -187,7 +181,7 @@ $countriesJSON =array();
 
                 $targetByMonth =  Doctrine::getTable('Day')->monthlyTargetsForOneSalespersonForAYear('2013', $this->selected_user->getId());
 
-                $month = statsHelper::createSalesTargetsJSON($salesByMonth,$targetByMonth);
+                $month = statsHelper::OLDcreateSalesTargetsJSON($salesByMonth,$targetByMonth);
 
                 sfConfig::set('sf_web_debug', false);
 

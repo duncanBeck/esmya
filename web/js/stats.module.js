@@ -41,7 +41,15 @@ function loadStats() {
         async: false,
         success: function(data) {
             months = data;
+
+
             for (i = 0; i < data.length; i += 1) {
+
+                if (months[i].actualSales>0 && months[i].targetTotal>0) {
+                    months[i].percentageEnd = months[i].actualSales / months[i].targetTotal *100;
+                    months[i].percentageEnd = months[i].percentageEnd.toFixed(1);
+                }
+
                 options.xAxis.categories.push(months[i].monthName);
                 options.series[0].data.push(months[i].actualSales);
                 options.series[1].data.push(months[i].targetTotal);
@@ -96,7 +104,7 @@ if (firstTime) {
 
 var menu = $('ul#st_month_selection a');
     menu.click(function(elem) {
-        console.log(this.dataset.month_id);
+//        console.log(this.dataset.month_id);
         setTemplate(this.dataset.month_id);
         menu.parent().removeClass('active');
 

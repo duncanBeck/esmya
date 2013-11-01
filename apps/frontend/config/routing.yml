@@ -2,6 +2,11 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 # this is the individual salespeople
+
+leaderboard:
+  url:   /leaderboard
+  param: { module: present, action: leaderBoard }
+
 stats:
   url:   /stats
   param: { module: present, action: stats }

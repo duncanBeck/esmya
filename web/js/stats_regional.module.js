@@ -49,7 +49,7 @@ function loadStats() {
         success: function(data) {
             $.each(data, function() {
                 $.each(this, function(k, v) {
-                    console.log(v);
+//                    console.log(v);
                     coMenu[k] = [];
                     coMenu[k]['name'] = v.name;
 
@@ -61,6 +61,8 @@ function loadStats() {
 
                         if (v.months[i].actualSales>0 && v.months[i].targetTotal>0) {
                             months[k][i].percentageEnd = v.months[i].actualSales / v.months[i].targetTotal *100;
+                            months[k][i].percentageEnd = months[k][i].percentageEnd.toFixed(1);
+
                         }
 
                         coMoData[k].xAxis.categories.push(v.months[i].monthName);
@@ -96,15 +98,15 @@ function redrawChart(c) {
 
 function buildCountryMenu() {
     var menu = '';
-    console.log(coMenu);
+//    console.log(coMenu);
 
     for (i = 0; i < coMenu.length; i += 1) {
 
-            console.log(i);
+//            console.log(i);
             menu+='<li class="col-md-1"><a href=# data-country_id="'+i+'">'+ coMenu[i].name+'</a></li>';
     }
 
-console.log (menu);
+// console.log (menu);
     $('ul#country_menu').append(menu);
 }
 
@@ -120,7 +122,7 @@ $(document).ready(function(){
 
     var menu = $('ul#st_month_selection a');
     menu.click(function(elem) {
-        console.log(this.dataset.month_id);
+//        console.log(this.dataset.month_id);
         setTemplate(this.dataset.month_id);
         menu.parent().removeClass('active');
 

@@ -15,6 +15,7 @@
  * @property Doctrine_Collection $Users
  * @property Doctrine_Collection $Days
  * @property Doctrine_Collection $Targets
+ * @property Doctrine_Collection $Chats
  * 
  * @method string              getName()      Returns the current record's "name" value
  * @method integer             getRegionId()  Returns the current record's "region_id" value
@@ -26,6 +27,7 @@
  * @method Doctrine_Collection getUsers()     Returns the current record's "Users" collection
  * @method Doctrine_Collection getDays()      Returns the current record's "Days" collection
  * @method Doctrine_Collection getTargets()   Returns the current record's "Targets" collection
+ * @method Doctrine_Collection getChats()     Returns the current record's "Chats" collection
  * @method SalesPerson         setName()      Sets the current record's "name" value
  * @method SalesPerson         setRegionId()  Sets the current record's "region_id" value
  * @method SalesPerson         setUserId()    Sets the current record's "user_id" value
@@ -36,6 +38,7 @@
  * @method SalesPerson         setUsers()     Sets the current record's "Users" collection
  * @method SalesPerson         setDays()      Sets the current record's "Days" collection
  * @method SalesPerson         setTargets()   Sets the current record's "Targets" collection
+ * @method SalesPerson         setChats()     Sets the current record's "Chats" collection
  * 
  * @package    esmya
  * @subpackage model
@@ -92,6 +95,10 @@ abstract class BaseSalesPerson extends sfDoctrineRecord
              'foreign' => 'sales_person_id'));
 
         $this->hasMany('Target as Targets', array(
+             'local' => 'id',
+             'foreign' => 'sales_person_id'));
+
+        $this->hasMany('Chat as Chats', array(
              'local' => 'id',
              'foreign' => 'sales_person_id'));
     }

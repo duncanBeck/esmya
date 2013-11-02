@@ -54,6 +54,7 @@ php symfony project:deploy production
 
 scp root@sales.esmya.com:/home/esmya/webserver ./
 
+  php symfony doctrine:generate-module --with-show --non-verbose-templates frontend podium Chat
 
   php symfony doctrine:generate-module --with-show --non-verbose-templates frontend people SalesPerson
   php symfony doctrine:generate-module --with-show --non-verbose-templates frontend sales Day

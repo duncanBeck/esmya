@@ -36,3 +36,13 @@ Region:
     name:               { type: string (32)}
     country_id:         { type: integer }
 
+Chat:
+  columns:
+    sales_person_id:    { type: integer, notnull: true }
+    chat_room:          { type: integer }
+    time_entered:       { type: date }
+    message:            { type: string (255)}
+  relations:
+    SalesPerson:        { local: sales_person_id, foreign: id, foreignAlias: Chats }
+
+

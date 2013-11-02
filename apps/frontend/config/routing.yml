@@ -2,6 +2,18 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 # this is the individual salespeople
+backend:
+  url: ../backend.php/admin_users
+
+podium_chat_json:
+  url:   /podium_chat_json
+  param: { module: podium, action: chatJson }
+  requirements: { sf_method: get }
+
+podium_chat_post:
+  url:   /podium_chat_post
+  param: { module: podium, action: chatPost }
+  requirements: { sf_method: post }
 
 leaderboard:
   url:   /leaderboard

@@ -37,6 +37,8 @@
                                if ($sf_user->getGuardUser()->getSalesPerson()->getIsAdmin()==1): ?>
                                     <li >  <a href="<?php  echo url_for('people') ?>">People</a></li>
                                     <li >  <a href="<?php  echo url_for('target') ?>">Targets</a></li>
+                                   <li >  <a href="<?php  echo url_for('backend') ?>">UserAdmin</a></li>
+
                                <?php endif ?>
 
                             <li >  <a href="<?php  echo url_for('stats') ?>">My Stats</a></li>

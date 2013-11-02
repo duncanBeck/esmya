@@ -1,0 +1,26 @@
+Chat:
+  1:
+
+    SalesPerson:   George
+    chat_room:         '2013_1_1'
+    time_entered:          '2013-08-01'
+    message:       'Georges first messages'
+
+  2:
+    SalesPerson:   George
+    chat_room:         '2013_1_1'
+    time_entered:          '2013-08-01'
+    message:       'Georges second messages'
+
+  3:
+    SalesPerson:   George
+    chat_room:         '2013_1_1'
+    time_entered:          '2013-08-01'
+    message:       'Georges third messages'
+
+
+  22:
+    SalesPerson:   Steven
+    chat_room:         '2013_1_1'
+    time_entered:          '2013-08-01'
+    message:       'Steven first messages'

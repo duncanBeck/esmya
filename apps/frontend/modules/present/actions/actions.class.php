@@ -17,6 +17,13 @@ class presentActions extends myActions
 
     }
 
+    public function  executeAboutTheRace() {
+
+
+
+    }
+
+
     public function executeStats(sfWebRequest $request)
     {
         $this->month = date("F", mktime(0, 0, 0, $request->getParameter('month_id'), 10));

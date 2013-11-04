@@ -23,7 +23,6 @@
             <li class="col-md-1">  <a href="<?php  echo url_for('stats') ?>">My Stats</a></li>
             <li class="col-md-1">  <a href="<?php  echo url_for('monthly_regional_stats') ?>">Country Stats</a></li>
             <li class="col-md-1">  <a href="<?php  echo url_for('podium') ?>">Podium</a></li>
-            <li class="col-md-1">  <a href="<?php  echo url_for('leaderboard') ?>">Leader Board</a></li>
 
             <?php    if ($sf_user->getGuardUser()->getSalesPerson()->getIsAdmin()==1): ?>
             <li >  <a href="<?php  echo url_for('people') ?>">Admin</a></li>

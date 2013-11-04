@@ -1,13 +1,12 @@
 var messages = [];
 var firstTime =  true;
 
-
 function loadMessages() {
     $.ajax({
         type: 'GET',
         url: 'podium_chat_json',
         dataType: 'json',
-        data: {},
+        data: { 'month_name':  monthName },
         async: false,
         success: function(data) {
             messages = data;
@@ -17,11 +16,14 @@ function loadMessages() {
 };
 
 
-function sendMessage() {
-    var messageInput =  $('#inputMessage');
+function sendMessage(el) {
+    var messageInput =  el;
     var formData = {'message':   messageInput.val(),
-                    'chatroom':   messageInput.data('podium_id')
-};
+                    'chatMonth':   monthName,
+                    'chatPodiumId':   messageInput.data('podium_id')
+
+    };
+    console.log('success');
 
  //   console.log($('#messageBox').data('podium_id'));
     $.ajax({
@@ -31,41 +33,47 @@ function sendMessage() {
         data : formData,
         success: function(data, textStatus, jqXHR)
         {
+  //      console.log('success');
             updateChat(data)
          },
         error: function (jqXHR, textStatus, errorThrown)
         {
+//            console.log('fail');
 
         }
     });
-};
+}
 
 function updateChat(newMessage) {
 
     console.log(newMessage);
     var template = $('#messageLine').html();
     var html = Mustache.to_html(template, newMessage);
-
-    var messages = $('#messages');
+console.log(newMessage.messages.podium);
+    var messages = $('#podium_'+newMessage.messages.podium+' .messages');
     messages.append(html);
     messages.scrollTop(messages[0].scrollHeight);
 
-    $('#inputMessage').val('');
+    messages.val('');
 }
 
 
+
+
     function setChat() {
+        var i =0;
+        $.each(messages, function(k,v) {
+                console.log(v);
+                i++;
+                console.log(i);
 
-        console.log(messages);
-        var template = $('#messageLine').html();
-        var html = Mustache.to_html(template, messages);
-        $('#messages').html(html);
+                var template = $('#messageLine').html();
+                var html = Mustache.to_html(template, v);
+                $('#podium_'+i+' .messages').html(html);
+        });
     }
 
-    function setChart() {
-//        console.log(months[0].actualSales);
-        var chart = new Highcharts.Chart(options);
-    }
+
 
 
 $(document).ready(function(){
@@ -79,10 +87,10 @@ if (firstTime) {
     firstTime = false;
 }
 */
-    $('#inputMessage').bind("enterKey",function(e){
-        sendMessage(e.val);
+    $('.inputMessage').bind("enterKey",function(e){
+        sendMessage($(this));
     });
-    $('#inputMessage').keyup(function(e){
+    $('.inputMessage').keyup(function(e){
         if(e.keyCode == 13)
         {
             $(this).trigger("enterKey");

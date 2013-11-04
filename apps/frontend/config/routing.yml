@@ -5,6 +5,16 @@
 backend:
   url: ../backend.php/admin_users
 
+about_race:
+  url:   /about_race
+  param: { module: present, action: aboutTheRace }
+  requirements: { sf_method: get }
+
+podium:
+  url:   /podium
+  param: { module: podium, action: index }
+  requirements: { sf_method: get }
+
 podium_chat_json:
   url:   /podium_chat_json
   param: { module: podium, action: chatJson }

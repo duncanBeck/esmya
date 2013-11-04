@@ -13,20 +13,30 @@ class podiumActions extends myActions
 
     public function executeChatJson(sfWebRequest $request)
     {
-        $chats = Doctrine_Core::getTable('Chat')
-            ->createQuery('a')
-            ->execute();
+        $i =1;
+        $chats = array();
+        $chats[$i]['messages'] = Doctrine_Core::getTable('Chat')->getAllThePodiumsForAMonth($request->getParameter('month_name'),1);
+$i++;
+        $chats[$i]['messages'] = Doctrine_Core::getTable('Chat')->getAllThePodiumsForAMonth($request->getParameter('month_name'),2);
+$i++;
+        $chats[$i]['messages'] = Doctrine_Core::getTable('Chat')->getAllThePodiumsForAMonth($request->getParameter('month_name'),3);
+
+
+
 
         sfConfig::set('sf_web_debug', false);
 
         $this->getResponse()->setHttpHeader('Content-type', 'application/json');
 
+
+/*
         $arr = array();
         foreach ($chats as $key=>$message) {
             $arr[] = array('userName' => $message->SalesPerson->getName(), 'message' => $message->getMessage());
         }
         $messages = array('messages' => $arr);
-        return $this->renderText(json_encode($messages));
+*/
+        return $this->renderText(json_encode($chats));
 
 
     }
@@ -39,7 +49,9 @@ class podiumActions extends myActions
         $message= new Chat();
         $message->setMessage($request->getParameter('message'));
         $message->setSalesPerson($this->selected_user);
-        $message->setChatRoom($request->getParameter('chatroom'));
+        $message->setChatMonth($request->getParameter('chatMonth'));
+        $message->setChatPodium($request->getParameter('chatPodiumId'));
+
         $message->setTimeEntered(date( 'Y-m-d H:i:s'));
         $message->save();
 
@@ -52,7 +64,8 @@ class podiumActions extends myActions
             "messages":{
                 "userName": "'.$message->getSalesPerson()->getName().'",
                 "message": "'.$message->getMessage().'",
-                "timeEntered": "'.$message->getTimeEntered().'"
+                "timeEntered": "'.$message->getTimeEntered().'",
+                "podium": "'.$message->getChatPodium().'"
 
                 }
         }

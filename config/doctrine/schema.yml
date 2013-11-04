@@ -39,7 +39,8 @@ Region:
 Chat:
   columns:
     sales_person_id:    { type: integer, notnull: true }
-    chat_room:          { type: integer }
+    chat_month:         { type: string (12) }
+    chat_podium:        { type: integer }
     time_entered:       { type: date }
     message:            { type: string (255)}
   relations:

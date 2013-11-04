@@ -1,4 +1,4 @@
-CREATE TABLE chat (id BIGINT AUTO_INCREMENT, sales_person_id BIGINT NOT NULL, chat_room BIGINT, time_entered DATE, message VARCHAR(255), INDEX sales_person_id_idx (sales_person_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE chat (id BIGINT AUTO_INCREMENT, sales_person_id BIGINT NOT NULL, chat_month VARCHAR(12), chat_podium BIGINT, time_entered DATE, message VARCHAR(255), INDEX sales_person_id_idx (sales_person_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE day (id BIGINT AUTO_INCREMENT, sales_date DATE, actual_sales BIGINT, sales_person_id BIGINT NOT NULL, INDEX sales_person_id_idx (sales_person_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE person_day (id BIGINT AUTO_INCREMENT, sales_person_id BIGINT NOT NULL, day_id BIGINT NOT NULL, INDEX sales_person_id_idx (sales_person_id), INDEX day_id_idx (day_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE region (id BIGINT AUTO_INCREMENT, name VARCHAR(32), country_id BIGINT, PRIMARY KEY(id)) ENGINE = INNODB;

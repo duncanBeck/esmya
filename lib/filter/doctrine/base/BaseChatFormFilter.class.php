@@ -14,14 +14,16 @@ abstract class BaseChatFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'sales_person_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('SalesPerson'), 'add_empty' => true)),
-      'chat_room'       => new sfWidgetFormFilterInput(),
+      'chat_month'      => new sfWidgetFormFilterInput(),
+      'chat_podium'     => new sfWidgetFormFilterInput(),
       'time_entered'    => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'message'         => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'sales_person_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('SalesPerson'), 'column' => 'id')),
-      'chat_room'       => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'chat_month'      => new sfValidatorPass(array('required' => false)),
+      'chat_podium'     => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'time_entered'    => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
       'message'         => new sfValidatorPass(array('required' => false)),
     ));
@@ -45,7 +47,8 @@ abstract class BaseChatFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'              => 'Number',
       'sales_person_id' => 'ForeignKey',
-      'chat_room'       => 'Number',
+      'chat_month'      => 'Text',
+      'chat_podium'     => 'Number',
       'time_entered'    => 'Date',
       'message'         => 'Text',
     );

@@ -16,4 +16,26 @@ class ChatTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Chat');
     }
+
+
+    public function getAllThePodiumsForAMonth  ($month = '2013_1', $podium = 1 ) {
+
+        // change the first group  by to s.name if you want to see the individuals
+
+// echo ($s_date);
+
+        $q = Doctrine_Query::create()
+            ->select('c.message as message,c.time_entered as timeEntered, s.name as userName')
+            ->from('Chat c')
+            ->leftJoin('c.SalesPerson s')
+            ->where('c.chat_month = ?', $month)
+            ->andWhere('c.chat_podium = ?', $podium)
+            ->orderBy('c.chat_podium ASC, c.time_entered ASC')
+
+        ;
+        // echo $q->getSqlQuery();
+
+        return $q->fetchArray();
+    }
+
 }

@@ -17,7 +17,8 @@ abstract class BaseChatForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'              => new sfWidgetFormInputHidden(),
       'sales_person_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('SalesPerson'), 'add_empty' => false)),
-      'chat_room'       => new sfWidgetFormInputText(),
+      'chat_month'      => new sfWidgetFormInputText(),
+      'chat_podium'     => new sfWidgetFormInputText(),
       'time_entered'    => new sfWidgetFormDate(),
       'message'         => new sfWidgetFormInputText(),
     ));
@@ -25,7 +26,8 @@ abstract class BaseChatForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'sales_person_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('SalesPerson'))),
-      'chat_room'       => new sfValidatorInteger(array('required' => false)),
+      'chat_month'      => new sfValidatorString(array('max_length' => 12, 'required' => false)),
+      'chat_podium'     => new sfValidatorInteger(array('required' => false)),
       'time_entered'    => new sfValidatorDate(array('required' => false)),
       'message'         => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));

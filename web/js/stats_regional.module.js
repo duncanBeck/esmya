@@ -79,7 +79,7 @@ function loadStats() {
 function setTemplate(month_id) {
 
     //     console.log(month_id);
-    $('#country_name').html(coMenu[selectedCountry].name);
+    $('.country_name').html(coMenu[selectedCountry].name);
 
     var template = $('#monthlyStats').html();
     var html = Mustache.to_html(template, months[selectedCountry][month_id-1]);

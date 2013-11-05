@@ -1,6 +1,5 @@
 <?php include_partial('present/header'); ?>
 
-<link rel="stylesheet" type="text/css" href="/css/BCA-CSS-Flag-Sprite/css/flags.css"/>
 
 
 <h1>World LeaderBoard (DEV)</h1>

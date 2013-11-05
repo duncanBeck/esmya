@@ -12,18 +12,20 @@
                 </ul>
             </div>
 
-        <div class="year_selection outset">
-            <div class="inset">
-                <div class="container">
-                    <div class="col-md-1">&#9664; &nbsp; 2012</div>
-                    <div class="col-md-3 col-md-offset-4 active">2013 | Total Sales Objectives</div>
-                    <div class="col-md-1 col-md-offset-3">2014 &nbsp; &#9654;</div>
+            <div class="row">
+
+                <div  class="col-lg-2 country_name"> </div>
+
+                <div class="col-lg-10" style="position:relative">
+                    <div  style="position:absolute; left:5px; z-index:0">
+                        <canvas id="canvas_1" width="1280" height="10" ></canvas>
+                    </div>
+                    <div style="position:absolute; top:-18px; left:100px; font-size:28px; z-index:2"><i class="flag-de"></i></div>
                 </div>
             </div>
-        </div>
 
         <div class="pie_text text-center">
-            <h1 id="country_name"></h1>
+            <h1 class="country_name"></h1>
             <div id=sales_dashboard>
                 <!-- here will be the template -->
             </div>
@@ -52,17 +54,17 @@
 
     <h1>{{monthName}} {{yearName}}</h1>
 
-    <h1>        total actual sales</h1>
-    <h2>            {{actualSales}}</h2>
+    <h2>        total actual sales</h2>
+    <h1>            {{actualSales}}</h1>
 
 
 
-    <h1> total sales target </h1>
-    <h2>      {{targetTotal}}</h2>
+    <h2> total sales target </h2>
+    <h1>      {{targetTotal}}</h1>
 
 
-    <h1>total sales objective completed</h1>
-    <h2>{{ percentageEnd }}%</h2>
+    <h2>total sales objective completed</h2>
+    <h1>{{ percentageEnd }}%</h1>
 </script>
 <!--
 
@@ -76,4 +78,15 @@
 <script src="js/mustache.js"></script>
 <script src="js/stats_regional.module.js"></script>
 
+<script src="js/leader_regional.module.js"></script>
 
+    <script>
+        var url = window.location;
+
+        $(document).ready(function(){
+            drawLine();
+            loadStats();
+            setTemplate(1);
+        });
+
+    </script>

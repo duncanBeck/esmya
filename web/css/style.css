@@ -138,7 +138,7 @@ a {
 	color: #fff;
 }
 #pie .pie_text h1 {
-	font-size: 30px;
+	font-size: 60px;
 	font-weight: 200;
 	text-transform: uppercase;
 }
@@ -242,4 +242,5 @@ sup {
 .messages {
     overflow-y: scroll;
     height: 200px;
+    width: 100%;
 }

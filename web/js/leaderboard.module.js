@@ -3,8 +3,8 @@ var firstTime =  true;
 var country;
 var selectedCountry = 0;
 var coMoData = [];
-var coMenu =   [];
-
+var coMenu  =   [];
+var rawData =  [];
 
     function drawLine() {
 
@@ -76,6 +76,31 @@ var coMenu =   [];
     }
 
 
+function setTemplate(month_id) {
+
+    //     console.log(month_id);
+//    $('#country_name').html(coMenu[selectedCountry].name);
+
+    var template = $('#leaderLine').html();
+    var html = Mustache.to_html(template, months[selectedCountry][month_id-1]);
+    $('#leaderLines').append(html);
+}
+
+
+/*
+json
+countries: {
+     country:'uk': {
+       [{month
+ */
+
+function accumulateFigures(data) {
+var formattedData = {};
+
+    formattedData.name=data.name;
+    return formattedData;
+}
+
 
     function loadStats() {
 
@@ -86,14 +111,14 @@ var coMenu =   [];
         data: {},
         async: false,
         success: function(data) {
+            rawData = data;
+            $formattedData = accumulateFigures(data);
             $.each(data, function() {
                 $.each(this, function(k, v) {
 //                    console.log(v);
                     coMenu[k] = [];
-                    coMenu[k]['name'] = v.name;
-
+                    coMenu[k]['months'] = v.months;
                     months[k] = v.months;
-
                 });
             });
         }

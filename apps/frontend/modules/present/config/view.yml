@@ -1,7 +1,8 @@
 raceSuccess:
   has_layout: false
 
-
+aboutTheRaceSuccess:
+  has_layout: false
 
 statsSuccess:
   has_layout: false
@@ -9,6 +10,8 @@ statsSuccess:
 raceJSONSuccess:
   has_layout: false
 
+leaderBoardSuccess:
+  has_layout: false
 
 monthlyRegionalStatsSuccess:
   has_layout: false

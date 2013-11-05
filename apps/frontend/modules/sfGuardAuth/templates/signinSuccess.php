@@ -10,7 +10,7 @@
 <body>
 <!-- nav -->
 <?php use_helper('I18N') ?>
-
+<?php /*
 <nav id="year">
     <div class="container">
         <ul id="year_selection" class="list-inline">
@@ -28,6 +28,8 @@
         </ul>
     </div>
 </nav>
+ <?php */ ?>
+<?php include_partial('present/esmyaMenu'); ?>
 
 
 

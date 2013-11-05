@@ -1,4 +1,6 @@
 <nav id="year">
+
+    <?php if (!isset($noMonths)) { ?>
     <div class="container">
         <ul id="st_month_selection" class="list-inline">
             <li class="col-md-1"><a href=# data-month_id="1">Jan</a></li>
@@ -15,7 +17,8 @@
             <li class="col-md-1"><a href=# data-month_id="12">Dec</a></li>
         </ul>
     </div>
-    <div class="container">
+        <?php } ?>
+    <div class="container text-center">
         <ul id="year_selection" class="list-inline">
             <li class="col-md-1"><a href="<?php  echo url_for('about_race') ?>">About Race </a></li>
 

@@ -20,11 +20,10 @@ var monthName = 'chatroom';
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus vel turpis fringilla aliquet ut et ipsum. Vivamus vestibulum lorem enim, pretium rutrum est varius eu. Proin non velit vel felis blandit facilisis. In porttitor, arcu vitae rhoncus vestibulum, nulla dui sollicitudin odio, vel lobortis mi leo eget lectus.</p>
                 <p>Suspendisse pellentesque auctor lorem nec malesuada. Nullam placerat ante quis dui accumsan, eu auctor justo vehicula. Proin ac tristique nunc. Etiam laoreet lectus et bibendum ornare. Duis ac odio vitae nulla consectetur varius. Vivamus varius gravida vestibulum. Morbi felis dui, semper quis cursus sollicitudin, placerat sit amet nisi.</p>
-            </div>
-            <div class="col-md-4">
+
                 <p>Integer in rutrum libero. Duis mauris dolor, malesuada sit amet libero non, auctor hendrerit urna. Sed ultricies mauris at ultricies rutrum. Donec et magna tellus. Suspendisse et quam luctus, elementum metus sed, venenatis ante.</p>
                 <p>Curabitur auctor dapibus purus, nec semper enim laoreet nec. Integer sagittis vehicula nulla, ut consectetur mi laoreet et. Morbi euismod condimentum elementum. Donec mollis nec sem hendrerit dignissim. Suspendisse potenti. Suspendisse varius turpis enim, sed porta turpis interdum a. Proin varius tortor et neque suscipit sagittis. Nunc egestas et velit eget eleifend. In hac habitasse platea dictumst. </p>
             </div>
@@ -32,8 +31,8 @@ var monthName = 'chatroom';
 
             <!-- a podium -->
 
-            <div class="col-md-3">
-                <table class="podium">
+            <div class="col-md-6">
+                <table>
                     <tr>
                         <td class="blue"><h3>Chat Room</h3></td>
                     </tr>
@@ -51,8 +50,8 @@ var monthName = 'chatroom';
                 </table>
             </div>
         </div>
-    </div>
-</div>
+
+        <div class="row">
 
 
 <div class="col-md-4">
@@ -66,7 +65,9 @@ var monthName = 'chatroom';
     <p>&nbsp;</p>
     <p><a href="#">SIGN UP AND RACE NOW &#9654;</a></p>
 </div>
+            </div>
 
+        <?php include_partial('present/menu_month_by_id', array('noMonths')); ?>
 
 
 
@@ -81,3 +82,12 @@ var monthName = 'chatroom';
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/mustache.js"></script>
 <script src="js/podium.module.js"></script>
+
+<script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover({trigger: 'hover','placement': 'top'});
+
+        });
+</script>
+
+

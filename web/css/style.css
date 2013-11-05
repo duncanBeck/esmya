@@ -135,18 +135,16 @@ a {
 }
 #pie .pie_text {
 	position: relative;
-	top: -500px;
 	color: #fff;
 }
 #pie .pie_text h1 {
-	font-size: 60px;
+	font-size: 30px;
 	font-weight: 200;
 	text-transform: uppercase;
 }
 #pie .pie_text h2 {
 	text-transform: uppercase;
-	font-size: 30px;
-	font-weight: 800;
+	font-size: 20px;
 	letter-spacing: 3px;
 }
 #pie .pie_text h1.big {
@@ -240,14 +238,6 @@ sup {
 	text-decoration: none;
 }
 
-
-#sales_dashboard {
-    width: 600px;
-    text-align: center;
-    color: #777;
-    font-weight: normal;
-    font-size: 16px;
-}
 
 .messages {
     overflow-y: scroll;

@@ -54,7 +54,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><div class="chart_2" style="height: 200px"></div></td>
+                        <td><div class="chart_2" style="height: 200px">Bar chart!</div></td>
                     </tr>
                 </table>
             </div>

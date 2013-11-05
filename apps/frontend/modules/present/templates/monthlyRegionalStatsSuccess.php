@@ -34,7 +34,8 @@
     </div>
 
 <!-- year -->
-
+<br>
+    <br>
 <div class="container">
 
 
@@ -71,7 +72,7 @@
 
 
 <script src="js/jquery-1.10.2.min.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="js/highcharts.js"></script>
 <script src="js/mustache.js"></script>
 <script src="js/stats_regional.module.js"></script>
 

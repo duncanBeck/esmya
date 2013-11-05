@@ -238,6 +238,16 @@ sup {
 	text-decoration: none;
 }
 
+.inputMessage {
+
+    width: 100%;
+}
+
+#chatroom .messages {
+    overflow-y: scroll;
+    height: 300px;
+    width: 100%;
+}
 
 .messages {
     overflow-y: scroll;

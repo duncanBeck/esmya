@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <h1>Sales Dashboard 2013</h1>
+            <h1>Monthly Dashboard 2013</h1>
             <div class="container">
                 <ul id="country_menu" class="list-inline">
                 </ul>
@@ -14,7 +14,7 @@
 
             <div class="row">
 
-                <div  class="col-lg-2 country_name"> </div>
+                <div  class="col-lg-2 pie_text"><h2 class="country_name"></h2> </div>
 
                 <div class="col-lg-10" style="position:relative">
                     <div  style="position:absolute; left:5px; z-index:0">
@@ -25,7 +25,6 @@
             </div>
 
         <div class="pie_text text-center">
-            <h1 class="country_name"></h1>
             <div id=sales_dashboard>
                 <!-- here will be the template -->
             </div>

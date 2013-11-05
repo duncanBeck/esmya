@@ -2,36 +2,64 @@
 
 <!-- year -->
 
+<!-- pie -->
+<div id="pie" class="dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
-<h1><?php echo $selected_user; ?>'s </h1>
-<?php // var_dump($stats); ?>
+                <h1>Monthly Dashboard 2013</h1>
+                <div class="container">
+                    <ul id="country_menu" class="list-inline">
+                    </ul>
+                </div>
 
-<div id=sales_dashboard class=sales_d_week>
-    <!-- here will be the template -->
-</div>
+                <div class="row">
 
-<div id="test_chart" style="height:200px;"></div>
+                    <div  class="col-lg-2 pie_text"><h2><?php echo $selected_user; ?>'s </h2></div>
 
-<?php include_partial('present/menu_month_by_id'); ?>
+                </div>
 
+                <div class="pie_text text-center">
+                    <div id=sales_dashboard>
+                        <!-- here will be the template -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- year -->
+    <br>
+    <br>
+    <div class="container">
+
+
+        <?php // var_dump($stats); ?>
+
+
+
+        <div id="test_chart" style="height:200px;"></div>
+
+        <?php include_partial('present/menu_month_by_id'); ?>
+    </div>
 
 <script id="monthlyStats" type="text/template">
 
     <h1>{{monthName}} {{yearName}}</h1>
 
-    <p/>        total actual sales
-    <p/>            {{actualSales}}
+    <h2>        total actual sales</h2>
+    <h1>            {{actualSales}}</h1>
 
 
-    <p/>Difference
-    <p/>{{actualSales - targetTotal}}
 
-    <p/>total sales target
-    <p/>     {{targetTotal}}
+    <h2> total sales target </h2>
+    <h1>      {{targetTotal}}</h1>
 
 
-    <p/>total sales objective completed
-    <p/>{{ percentageEnd }}%
+    <h2>total sales objective completed</h2>
+    <h1>{{ percentageEnd }}%</h1>
 </script>
 
 <script src="js/jquery-1.10.2.min.js"></script>

@@ -31,13 +31,13 @@ var monthName = 'chatroom';
 
             <!-- a podium -->
 
-            <div class="col-md-6">
-                <table>
+            <div id="chatroom" class="col-md-6">
+                <table style='width:400px'>
                     <tr>
                         <td class="blue"><h3>Chat Room</h3></td>
                     </tr>
                     <tr>
-                        <td class="grey ">
+                        <td >
                             <div id="podium_1" >
                                 <div class="messages">
                                 </div>

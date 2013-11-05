@@ -11,20 +11,19 @@
     <div  style="position:absolute; left:5px; z-index:0">
         <canvas id="canvas_1" width="1280" height="10" ></canvas>
     </div>
-    <div style="position:absolute; top:-18px; left:100px; font-size:28px; z-index:2"><i class="flag-us"></i></div>
+    <div style="position:absolute; top:-18px; left:100px; font-size:28px; z-index:2"><img class="car_size" src="/images/cars_FR.svg"></div>
 </div>
 </div>
 
        <div class="row">
-
-                    <div  class="col-lg-2">United Kingdom</div>
+                    <div  class="col-lg-2" class="gold">United Kingdom</div>
 
 <div  class="col-lg-10" style="position:relative">
 
     <div  style="position:absolute; left:5px; z-index:0">
         <canvas id="canvas_2" width="1280" height="10" ></canvas>
     </div>
-    <div style="position:absolute; top:-18px; left:400px; font-size:28px; z-index:2"><i class="flag-gb"></i></div>
+    <div style="position:absolute; top:-16px; left:400px; font-size:28px; z-index:2"><img class="car_size" src="/images/cars_UK.svg"></div>
 
 
 </div>
@@ -39,7 +38,7 @@
     <div  style="position:absolute; left:5px; z-index:0">
         <canvas id="canvas_3" width="1280" height="10" ></canvas>
     </div>
-    <div style="position:absolute; top:-18px; left:500px; font-size:28px; z-index:2"><i class="flag-de"></i></div>
+    <div style="position:absolute; top:-18px; left:500px; font-size:28px; z-index:2"><img class="car_size" src="/images/cars_DE.svg"></div>
 
 
 </div>

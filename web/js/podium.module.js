@@ -53,8 +53,9 @@ console.log(newMessage.messages.podium);
     var messages = $('#podium_'+newMessage.messages.podium+' .messages');
     messages.append(html);
     messages.scrollTop(messages[0].scrollHeight);
+    var inputBox = $('#podium_'+newMessage.messages.podium+' .inputMessage');
 
-    messages.val('');
+    inputBox.val('');
 }
 
 

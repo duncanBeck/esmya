@@ -220,6 +220,23 @@ sup {
 	text-transform: uppercase;
 	padding: 5px 0;
 }
+
+#podiums .first_place {
+    background:url('/images/ITALY_POD_01.png') no-repeat;
+    width:  200px;
+    height: 37px;
+    background-color: #fff;
+    background-size:100%
+}
+
+#podiums .italy_flag {
+    background:url('/images/ITALY_POD_03.png') no-repeat;
+    width:  200px;
+    height: 69px;
+    background-color: #fff;
+    background-size:100%
+}
+
 #footer {
 	border-top: 1px solid #999;
 	padding-top: 20px;
@@ -254,3 +271,31 @@ sup {
     height: 200px;
     width: 100%;
 }
+
+.car_size {
+
+    height: 20px;
+    background-size:100%
+
+}
+
+
+/* == UK == */
+.car_1_mod{
+    transform: scale(1.2);
+    transform-origin: center;
+    background-image:url('/images/cars_UK.svg');
+    height: 300px;
+    background-size:100%;
+    display: block;
+}
+
+/* == GERMANY == */
+.car_2_mod{
+    transform: scale(1.2);
+    transform-origin: center;
+    background-image:url('/images/cars_GE.svg');
+    height: 20px;
+    background-size:100%;
+}
+

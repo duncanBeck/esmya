@@ -17,7 +17,13 @@
             <div class="col-md-3">
                 <table class="podium">
                     <tr>
-                        <td class="blue"><h1>Italy</h1></td>
+                        <td class="first_place"></td>
+                    </tr>
+                    <tr>
+                        <td class="blue "><h1>Italy</h1></td>
+                    </tr>
+                    <tr>
+                        <td class="italy_flag"></td>
                     </tr>
                     <tr>
                         <td class="grey ">

@@ -34,11 +34,15 @@
 
 
 <div class="row">
-    <div class="col-md-2 col-md-offset-5">
-<h1><?php echo __('Signin', null, 'sf_guard') ?></h1>
+    <div class="container">
+
+    <div class="col-md-2 col-md-offset-5"  style="top:100px">
+<h1><?php echo __('Login', null, 'sf_guard') ?></h1>
 
 
 <?php echo get_partial('sfGuardAuth/signin_form', array('form' => $form)) ?>
+        <br>
 <h3><a href="/register">Register!</a></h3>
 </div>
+        </div>
 </div>

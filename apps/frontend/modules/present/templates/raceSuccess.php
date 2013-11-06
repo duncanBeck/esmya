@@ -10,7 +10,7 @@
             <div class="play_wrapper">
                 <div class="play_holder">
                     <div id="play_btn"></div>
-                    <div id="race_results" style="position:relative; top:0; left:5; color:red; font-size:28px; z-index:2"></div>
+                    <div id="race_results" class="container" style="position:relative; top:0; left:5;"></div>
 
                 </div>
             </div>
@@ -64,26 +64,46 @@
             <li class="col-md-1"><a href="<?php  echo url_for('race') ?>?month_code=dec&month_id=12">Dec</a></li>
         </ul>
     </div>
-    <div class="container text-center">
-        <ul id="year_selection" class="list-inline">
-            <li class="col-md-1"><a href="<?php  echo url_for('about_race') ?>">About Race </a></li>
+    <div class="container text-center class="col-md-12"">
+    <ul id="year_selection" class="list-inline">
+        <li><a href="<?php  echo url_for('about_race') ?>">About Race </a></li>
 
-            <li class="col-md-1"><a href="<?php  echo url_for('race') ?>">Race </a></li>
-            <li class="col-md-1">  <a href="<?php  echo url_for('stats') ?>">My Stats</a></li>
-            <li class="col-md-1">  <a href="<?php  echo url_for('monthly_regional_stats') ?>">Country Stats</a></li>
-            <li class="col-md-1">  <a href="<?php  echo url_for('podium') ?>">Podium</a></li>
-            <li class="col-md-1">  <a href="<?php  echo url_for('leaderboard') ?>">Leader Board</a></li>
+        <li><a href="<?php  echo url_for('race') ?>">Race </a></li>
+        <li>  <a href="<?php  echo url_for('stats') ?>">My Stats</a></li>
+        <li>  <a href="<?php  echo url_for('monthly_regional_stats') ?>">Country Stats</a></li>
+        <li>  <a href="<?php  echo url_for('podium') ?>">Podium</a></li>
+        <li>  <a href="<?php  echo url_for('leaderboard') ?>">Leader Board</a></li>
 
-            <?php    if ($sf_user->getGuardUser()->getSalesPerson()->getIsAdmin()==1): ?>
-            <li >  <a href="<?php  echo url_for('people') ?>">Admin</a></li>
+        <?php    if ($sf_user->getGuardUser()->getSalesPerson()->getIsAdmin()==1): ?>
+        <li >  <a href="<?php  echo url_for('people') ?>">Admin</a></li>
 
 
-            <?php endif ?>
-            <li > <?php echo link_to('Logout', 'sf_guard_signout') ?></li>
+        <?php endif ?>
+        <li > <?php echo link_to('Logout', 'sf_guard_signout') ?></li>
 
-        </ul>
+    </ul>
     </div>
+
 </nav>
+
+<script id="resultLine" type="text/template">
+Standings
+    <hr>
+    <table class="table table-striped">
+    <thead class="ranking_head">
+    <th>Rank</th>
+    <th>Country</th>
+    <th>Score</th>
+    </thead>
+    {{#cars}}
+
+        <tr>
+    <td>{{position}}</td><td><a href=#>{{country}}</a></td><td>{{score}}</td>
+</tr>
+    {{/cars}}
+</table>
+</script>
+
 
 
 <script src="/js/jquery-1.10.2.min.js"></script>
@@ -91,6 +111,7 @@
 <script src="/js/greensock/TimelineLite.min.js"></script>
 
 <script src="/js/jquery.fullscreen-0.3.5.min.js"></script>
+<script src="js/mustache.js"></script>
 <script src="/js/racer.module.js"></script>
 <script src="/js/countdown.js"></script>
 

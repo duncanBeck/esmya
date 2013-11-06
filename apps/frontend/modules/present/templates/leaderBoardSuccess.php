@@ -11,7 +11,7 @@
     <div  style="position:absolute; left:5px; z-index:0">
         <canvas id="canvas_1" width="1280" height="10" ></canvas>
     </div>
-    <div style="position:absolute; top:-18px; left:100px; font-size:28px; z-index:2"><img class="car_size" src="/images/cars_FR.svg"></div>
+    <div style="position:absolute; top:-16px; left:100px; font-size:28px; z-index:2"><img class="car_size" src="/images/cars_FR.svg"></div>
 </div>
 </div>
 
@@ -38,7 +38,7 @@
     <div  style="position:absolute; left:5px; z-index:0">
         <canvas id="canvas_3" width="1280" height="10" ></canvas>
     </div>
-    <div style="position:absolute; top:-18px; left:500px; font-size:28px; z-index:2"><img class="car_size" src="/images/cars_DE.svg"></div>
+    <div style="position:absolute; top:-16px; left:500px; font-size:28px; z-index:2"><img class="car_size" src="/images/cars_DE.svg"></div>
 
 
 </div>
@@ -79,11 +79,7 @@
 <script>
     var url = window.location;
 
-    $(document).ready(function(){
-        drawLine();
-        loadStats();
-        setTemplate(1);
-    });
+
 
 </script>
 

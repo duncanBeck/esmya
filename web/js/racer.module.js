@@ -1,3 +1,4 @@
+var raceResults= [];
 
 function racerModule(){
     'use strict'
@@ -7,7 +8,7 @@ function racerModule(){
     var play_btn = document.getElementById('play_btn');
     var FS_trigger = document.getElementById('FS_trigger');
     var AvgLapDuration = 3.2; // in seconds; the lower the number, the faster the race
-    var laps = 2;
+    var laps = 1;
     var track;
     var track_startLine = 0.1;
     var track_startPosition = 0.075;
@@ -18,7 +19,6 @@ function racerModule(){
     var audioStart = [];
     var audioMiddle = [];
     var carAni = [];
-    var raceResults ='';
 
 //tracks
     /* TRACK 1*/
@@ -129,6 +129,7 @@ function racerModule(){
             }
 // get cars info
             var pos;
+            raceResults.cars = [];
             for(i=0;i<json.data.length;i++){
 // grabs data, creates an array of cars;
                 car = new Object();
@@ -143,7 +144,8 @@ function racerModule(){
                 cars.push(car);// adds to the array of cars
                 cars.sort(compare);/* sorts the cars in starting position order */
                 pos = i+1;
-                raceResults+='<p>'+pos+': '+json.data[i].country+'</p>';
+
+                raceResults.cars.push({'position':pos, 'country':json.data[i].country, 'score': car.sales});
 
             };
             /* add cars to stage, already ordered in starting position */
@@ -254,11 +256,19 @@ function racerModule(){
         thisCar[cars.length-1].eventCallback("onComplete", function () {finishRace()});
 
 
+        function setTemplate(results) {
+
+            //     console.log(month_id);
+            var template = $('#resultLine').html();
+            var html = Mustache.to_html(template, results);
+            $('#race_results').html(html);
+        }
+
         function finishRace()  {
             for (i=0;i<cars.length;i++){
                 audioMiddle[i].loop = false; audioMiddle[i].pause(); audioMiddle[i].currentTime = 0; audioStart[i].play();
             }
-            $('#race_results').html(raceResults);
+            setTemplate(raceResults);
         }
 
         var lastCarComplete = (cars[cars.length-1].speed+cars.length)*(laps)-10;

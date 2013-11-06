@@ -1,3 +1,66 @@
+var co_codes = [
+
+    {
+        'name':'Belgium',
+        'co_code':'BE'
+    },
+
+    {
+        'name':'Germany',
+        'co_code':'GE'
+    },
+
+    {
+        'name':'Finland',
+        'co_code':'FI'
+    },
+    {
+        'name':'France',
+        'co_code':'FR'
+    },
+
+    {
+        'name':'Italy',
+        'co_code':'IT'
+    },
+
+    {
+        'name':'Luxemburg',
+        'co_code':'LU'
+    },
+
+    {
+        'name':'Netherlands',
+        'co_code':'NE'
+    },
+
+    {
+        'name':'Norway',
+        'co_code':'NO'
+    },
+
+    {
+        'name':'Spain',
+        'co_code':'SP'
+    },
+
+    {
+        'name':'Sweded',
+        'co_code':'SWE'
+    },
+
+    {
+        'name':'Switzerland',
+        'co_code':'SWI'
+    },
+
+    {
+        'name':'United Kingdom',
+        'co_code':'UK'
+    }
+
+    ];
+
 var months = [];
 var firstTime =  true;
 var country;
@@ -110,14 +173,54 @@ function buildCountryMenu() {
     $('ul#country_menu').append(menu);
 }
 
+function loadCodes() {
+     of_codes = (function () {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': 'js/data.json',
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+                console.log(json);
+            alert('dtop');
+            },
+            'fail':function(e){
+
+                console.log(e);
+            }
+        });
+        return json;
+    })();
+}
+
+
+
+function updateCar(name) {
+    var image = $('img.car_size_stats');
+    var src = co_codes.filter(function(elem) {
+        if (elem.name==name)
+            return elem.co_code;
+    });
+    var link ='/images/cars_'+src[0].co_code+'.svg';
+    console.log(link);
+    image.attr('src',link);
+}
+
 
 $(document).ready(function(){
     loadStats();
+    loadCodes();
     if (firstTime) {
+
+
         setTemplate(1);
         setChart(selectedCountry);
         firstTime = false;
         buildCountryMenu();
+        updateCar(coMenu[selectedCountry].name);
+
     }
 
     var menu = $('ul#st_month_selection a');
@@ -137,6 +240,7 @@ $(document).ready(function(){
         $(this).parent().addClass('active');
         setTemplate(1);
         setChart(selectedCountry);
+        updateCar(coMenu[selectedCountry].name);
 
     })
 

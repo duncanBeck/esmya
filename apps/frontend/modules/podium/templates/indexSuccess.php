@@ -7,8 +7,6 @@
 <div id="podiums" class="">
     <div class="container">
         <h1>Podium Positions</h1>
-        <h3>Race 4 Positions</h3>
-        <h3>May 15 2013</h3>
         <div class="row" class="">
             <!-- a podium -->
 
@@ -20,7 +18,7 @@
                         <td class="first_place"></td>
                     </tr>
                     <tr>
-                        <td class="blue "><h1>Italy</h1></td>
+                        <td class="blue"><h1>Italy</h1></td>
                     </tr>
                     <tr>
                         <td class="italy_flag"></td>
@@ -60,7 +58,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><div class="chart_2" style="height: 200px">Bar chart!</div></td>
+                        <td><div class="chart_2" style="height: 200px"></div></td>
                     </tr>
                 </table>
             </div>

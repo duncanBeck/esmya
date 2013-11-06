@@ -15,9 +15,7 @@ var monthName = 'chatroom';
             <div class="col-md-8">
                 <h3>THE FACTS</h3>
             </div>
-            <div class="col-md-4">
-                <h3>THE RULES</h3>
-            </div>
+
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -53,8 +51,9 @@ var monthName = 'chatroom';
 
         <div class="row">
 
+            <div class="col-md-8">
+                <h3>THE RULES</h3>
 
-<div class="col-md-4">
     <ol>
         <li><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></li>
         <li><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></li>
@@ -62,12 +61,10 @@ var monthName = 'chatroom';
         <li><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></li>
         <li><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></li>
     </ol>
-    <p>&nbsp;</p>
-    <p><a href="#">SIGN UP AND RACE NOW &#9654;</a></p>
-</div>
+    </div>
             </div>
 
-        <?php include_partial('present/menu_month_by_id', array('noMonths')); ?>
+        <?php include_partial('present/menu_month_by_id', array('noMonths'=>true)); ?>
 
 
 

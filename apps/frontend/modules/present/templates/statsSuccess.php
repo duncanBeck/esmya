@@ -8,15 +8,13 @@
         <div class="row">
             <div class="col-md-12">
 
-                <h1>Monthly Dashboard 2013</h1>
+                <h1><?php echo $selected_user; ?>'s Monthly Dashboard 2013</h1>
                 <div class="container">
                     <ul id="country_menu" class="list-inline">
                     </ul>
                 </div>
 
                 <div class="row">
-
-                    <div  class="col-lg-2 pie_text"><h2><?php echo $selected_user; ?>'s </h2></div>
 
                 </div>
 

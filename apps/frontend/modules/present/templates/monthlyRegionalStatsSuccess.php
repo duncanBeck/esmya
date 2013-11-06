@@ -20,7 +20,7 @@
                     <div  style="position:absolute; left:5px; z-index:0">
                         <canvas id="canvas_1" width="1280" height="10" ></canvas>
                     </div>
-                    <div style="position:absolute; top:-18px; left:100px; font-size:28px; z-index:2"><i class="flag-de"></i></div>
+                    <div style="position:absolute; top:-18px; left:354px; font-size:28px; z-index:2"><img class="car_size_stats"></div>
                 </div>
             </div>
 
@@ -83,7 +83,7 @@
         var url = window.location;
 
         $(document).ready(function(){
-            drawLine();
+          //  drawLine();
             loadStats();
             setTemplate(1);
         });

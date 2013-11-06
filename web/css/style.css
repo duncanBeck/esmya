@@ -274,11 +274,41 @@ sup {
 
 .car_size {
 
-    height: 20px;
+    height: 24px;
     background-size:100%
 
 }
 
+.car_size_stats {
+
+    height: 48px;
+    background-size:100%
+
+}
+
+#race_results  {
+    width:800px;
+    background-color: white;
+    color: #003bb3;
+    font-weight: 400;
+    text-align: left;
+    z-index:2;
+    font-size: 48px;
+    float: none;
+    margin: 0 auto;
+}
+
+
+#race_results th {
+    font-size: 36px;
+}
+#race_results tr {
+    font-size: 24px;
+}
+
+#race_results .ranking_head {
+    text-align: center;
+}
 
 /* == UK == */
 .car_1_mod{

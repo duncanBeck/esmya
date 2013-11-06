@@ -93,12 +93,37 @@ countries: {
      country:'uk': {
        [{month
  */
+var selectedMonth={};
 
-function accumulateFigures(data) {
-var formattedData = {};
+function accumulateFigures() {
 
-    formattedData.name=data.name;
-    return formattedData;
+    for (i = 0; i < rawData.countries.length; i += 1) {
+        var totalSales =0;
+        var totalTarget = 0;
+        for (j = 0; j < 12; j += 1) { // months always equals 12
+            totalSales+=rawData.countries[i].months[j].actualSales;
+            rawData.countries[i].months[j].totalSales = totalSales;
+            totalTarget+=rawData.countries[i].months[j].targetTotal;
+            rawData.countries[i].months[j].totalTarget = totalTarget;
+        }
+        rawData.countries[i].yearTarget = totalTarget;
+        rawData.countries[i].yearSales = totalSales;
+    }
+
+}
+
+function countryAndMonth(c,m) {
+
+
+    selectedMonth.name=rawData.countries[c].name;
+    selectedMonth.yearSales=rawData.countries[c].yearSales;
+    selectedMonth.yearTarget=rawData.countries[c].yearTarget;
+
+    selectedMonth.month = rawData.countries[c].months.filter(function(elem) {
+        return elem.monthName==m;
+    });
+
+
 }
 
 
@@ -124,3 +149,12 @@ var formattedData = {};
         }
     })
     };
+
+
+$(document).ready(function(){
+    drawLine();
+    loadStats();
+    setTemplate(1);
+    accumulateFigures();
+    countryAndMonth(2,'July');
+});

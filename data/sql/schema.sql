@@ -1,7 +1,7 @@
 CREATE TABLE chat (id BIGINT AUTO_INCREMENT, sales_person_id BIGINT NOT NULL, chat_month VARCHAR(12), chat_podium BIGINT, time_entered DATE, message VARCHAR(255), INDEX sales_person_id_idx (sales_person_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE day (id BIGINT AUTO_INCREMENT, sales_date DATE, actual_sales BIGINT, sales_person_id BIGINT NOT NULL, INDEX sales_person_id_idx (sales_person_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE person_day (id BIGINT AUTO_INCREMENT, sales_person_id BIGINT NOT NULL, day_id BIGINT NOT NULL, INDEX sales_person_id_idx (sales_person_id), INDEX day_id_idx (day_id), PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE region (id BIGINT AUTO_INCREMENT, name VARCHAR(32), country_id BIGINT, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE region (id BIGINT AUTO_INCREMENT, name VARCHAR(32), co_code VARCHAR(2), country_id BIGINT, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE sales_person (id BIGINT AUTO_INCREMENT, name VARCHAR(32), region_id BIGINT NOT NULL, user_id BIGINT NOT NULL, is_active TINYINT(1) DEFAULT '1' NOT NULL, is_admin TINYINT(1) DEFAULT '0' NOT NULL, INDEX region_id_idx (region_id), INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE target (id BIGINT AUTO_INCREMENT, sales_target BIGINT, time_period DATE, sales_person_id BIGINT NOT NULL, INDEX sales_person_id_idx (sales_person_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_forgot_password (id BIGINT AUTO_INCREMENT, user_id BIGINT NOT NULL, unique_key VARCHAR(255), expires_at DATETIME NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;

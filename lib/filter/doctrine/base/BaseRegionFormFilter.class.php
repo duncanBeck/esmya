@@ -14,11 +14,13 @@ abstract class BaseRegionFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'name'       => new sfWidgetFormFilterInput(),
+      'co_code'    => new sfWidgetFormFilterInput(),
       'country_id' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'name'       => new sfValidatorPass(array('required' => false)),
+      'co_code'    => new sfValidatorPass(array('required' => false)),
       'country_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
@@ -41,6 +43,7 @@ abstract class BaseRegionFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'         => 'Number',
       'name'       => 'Text',
+      'co_code'    => 'Text',
       'country_id' => 'Number',
     );
   }

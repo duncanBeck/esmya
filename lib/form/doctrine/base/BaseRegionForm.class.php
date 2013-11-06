@@ -17,12 +17,14 @@ abstract class BaseRegionForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'         => new sfWidgetFormInputHidden(),
       'name'       => new sfWidgetFormInputText(),
+      'co_code'    => new sfWidgetFormInputText(),
       'country_id' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'name'       => new sfValidatorString(array('max_length' => 32, 'required' => false)),
+      'co_code'    => new sfValidatorString(array('max_length' => 2, 'required' => false)),
       'country_id' => new sfValidatorInteger(array('required' => false)),
     ));
 

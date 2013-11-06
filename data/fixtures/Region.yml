@@ -1,57 +1,65 @@
 Region:
 
   bel:
-    name:  Belgium
-    co_code:  BE
-
+      name:  Belgium
+      co_code:  BE
+      country_id:  1
 
   ger:
-      Cname:  Germany
+      name:  Germany
       co_code:  GE
+      country_id:  2
 
   fin:
       name:  Finland
       co_code:  FI
+      country_id:  3
 
   fra:
       name:  France
       co_code:  FR
+      country_id:  4
 
 
   ita:
       name:  Italy
       co_code:  IT
+      country_id:  5
 
 
   lux:
       name:  Luxemburg
       co_code:  LU
+      country_id:  6
+
 
   Net:
       name:  Netherlands
       co_code:  NE
+      country_id:  7
 
 
   Nor:
       name:  Norway
       co_code:  NO
-
+      country_id:  8
 
   Spa:
       name:  Spain
       co_code:  SP
+      country_id:  9
 
   Swe:
       name:  Sweden
       co_code:  SWE
-
+      country_id:  10
 
   Swi:
       name:  Switzerland
       co_code:  SWI
-
+      country_id:  11
 
   UK:
       name:  United Kingdom
       co_code:  UK
-
+      country_id:  12

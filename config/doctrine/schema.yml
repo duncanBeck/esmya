@@ -34,7 +34,8 @@ Target:
 Region:
   columns:
     name:               { type: string (32)}
-    country_id:         { type: integer }
+    co_code:            { type: string (2)}
+    country_id:           { type: integer }
 
 Chat:
   columns:

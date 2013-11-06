@@ -48,14 +48,14 @@ SalesPerson:
   Dave:
     name:       Oscar
     User:       Oscar
-    Region:     Germany
+    Region:     ger
     is_active:  1
     is_admin:   0
 
   Cornelius:
     name:       Cornelius
     User:       Cornelius
-    Region:     Holland
+    Region:     Net
     is_active:  1
     is_admin:   0
 
@@ -63,6 +63,6 @@ SalesPerson:
   Klaus:
     name:       Klaus
     User:       Klaus
-    Region:     Germany
+    Region:     ger
     is_active:  1
     is_admin:   0

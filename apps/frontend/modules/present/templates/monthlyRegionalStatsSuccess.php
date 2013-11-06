@@ -72,20 +72,22 @@
     -->
 
 
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/highcharts.js"></script>
-<script src="js/mustache.js"></script>
-<script src="js/stats_regional.module.js"></script>
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/highcharts.js"></script>
+<script src="/js/mustache.js"></script>
+<script src="/js/stats_regional.module.js"></script>
 
-<script src="js/leader_regional.module.js"></script>
+<script src="/js/leader_regional.module.js"></script>
 
     <script>
         var url = window.location;
 
         $(document).ready(function(){
-          //  drawLine();
-            loadStats();
-            setTemplate(1);
+
+            var json = <?php echo $sf_data->getRaw('json'); ?>
+
+            setVariables(json);
+
         });
 
     </script>

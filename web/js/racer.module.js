@@ -1,4 +1,5 @@
 var raceResults= [];
+var year;
 
 function racerModule(){
     'use strict'
@@ -19,6 +20,7 @@ function racerModule(){
     var audioStart = [];
     var audioMiddle = [];
     var carAni = [];
+    var monthScope;
 
 //tracks
     /* TRACK 1*/
@@ -102,7 +104,7 @@ function racerModule(){
 // After Json loads, build track and cars
 // load track
             (function loadTrack(){
-                var monthScope = json.month;
+                monthScope = json.month;
                 switch(monthScope){
                     case 'jan' : track = track_1;break;
                     case 'feb' : track = track_2;break;
@@ -145,7 +147,7 @@ function racerModule(){
                 cars.sort(compare);/* sorts the cars in starting position order */
                 pos = i+1;
 
-                raceResults.cars.push({'position':pos, 'country':json.data[i].country, 'score': car.sales});
+                raceResults.cars.push({'position':pos,'year': 2013,'month': monthScope, 'country':json.data[i].country, 'score': car.sales});
 
             };
             /* add cars to stage, already ordered in starting position */

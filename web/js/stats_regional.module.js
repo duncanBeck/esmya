@@ -45,7 +45,7 @@ var co_codes = [
     },
 
     {
-        'name':'Sweded',
+        'name':'Sweden',
         'co_code':'SWE'
     },
 
@@ -65,6 +65,8 @@ var months = [];
 var firstTime =  true;
 var country;
 var selectedCountry = 0;
+var selectedMonth = 1;
+
 var coMoData = [];
 var coMenu =   [];
 
@@ -105,7 +107,7 @@ function loadStats() {
 
     $.ajax({
         type: 'GET',
-        url: 'regional_stats_data',
+        url: '/regional_stats_data',
         dataType: 'json',
         data: {},
         async: false,
@@ -141,7 +143,7 @@ function loadStats() {
 
 function setTemplate(month_id) {
 
-    //     console.log(month_id);
+         console.log('');
     $('.country_name').html(coMenu[selectedCountry].name);
 
     var template = $('#monthlyStats').html();
@@ -173,28 +175,12 @@ function buildCountryMenu() {
     $('ul#country_menu').append(menu);
 }
 
-function loadCodes() {
-     of_codes = (function () {
-        var json = null;
-        $.ajax({
-            'async': false,
-            'global': false,
-            'url': 'js/data.json',
-            'dataType': "json",
-            'success': function (data) {
-                json = data;
-                console.log(json);
-            alert('dtop');
-            },
-            'fail':function(e){
+function setVariables(json) {
 
-                console.log(e);
-            }
-        });
-        return json;
-    })();
+    selectedCountry=json.selectedCountry;
+    selectedMonth=json.selectedMonth;
+    selectedYear=json.selectedYear;
 }
-
 
 
 function updateCar(name) {
@@ -211,11 +197,10 @@ function updateCar(name) {
 
 $(document).ready(function(){
     loadStats();
-    loadCodes();
+    // drawLine();
+//    loadCodes();
     if (firstTime) {
-
-
-        setTemplate(1);
+        setTemplate(selectedMonth);
         setChart(selectedCountry);
         firstTime = false;
         buildCountryMenu();
@@ -226,7 +211,8 @@ $(document).ready(function(){
     var menu = $('ul#st_month_selection a');
     menu.click(function(elem) {
 //        console.log(this.dataset.month_id);
-        setTemplate(this.dataset.month_id);
+        selectedMonth=this.dataset.month_id;
+        setTemplate(selectedMonth);
         menu.parent().removeClass('active');
 
         $(this).parent().addClass('active');

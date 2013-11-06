@@ -94,12 +94,18 @@ class presentActions extends myActions
 
 
     public function executeMonthlyRegionalStats (sfWebRequest $request) {
+        $this->json = json_encode(array("selectedYear"=>$request->getParameter('month'),
+                "selectedMonth"=>$request->getParameter('year'),
+                "selectedCountry"=>$request->getParameter('country')
+            ));
 
     }
 
 
     public function executeMonthlyRegionalStatsData (sfWebRequest $request) {
-$countriesJSON =array();
+        $countriesJSON =array();
+
+
     $countries = Doctrine::getTable('Region')->createQuery('a')->orderBy('name')->execute();
 
         foreach($countries as $country){

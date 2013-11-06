@@ -39,10 +39,16 @@ monthly_stats_data:
 
 # this is the monthly regionals
 
+
 monthly_regional_stats:
   url:   /regional_stats
   param: { module: present, action: monthlyRegionalStats }
 
+monthly_regional_stats_param:
+  url:   /regional_stats/:year/:month/:country
+  param: { module: present, action: monthlyRegionalStats }
+
+# and the json feed
 monthly_regional_stats_data:
   url:   /regional_stats_data
   param: { module: present, action: monthlyRegionalStatsData }

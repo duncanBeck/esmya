@@ -98,7 +98,7 @@ Standings
     {{#cars}}
 
         <tr>
-    <td>{{position}}</td><td><a href=#>{{country}}</a></td><td>{{score}}</td>
+    <td>{{position}}</td><td><a href="/regional_stats/{{year}}/{{month}}/{{country}}">{{country}}</a></td><td>{{score}}</td>
 </tr>
     {{/cars}}
 </table>
